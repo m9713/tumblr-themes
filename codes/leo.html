@@ -15,7 +15,7 @@
     credits:
 
     -> fonts: google fonts
-    -> icons: feathericons & boxicons
+    -> icons: feathericons css font by icomoon
     -> expandedtumblrlocalization: @boscoxvi
     -> short notes: @shythemes
     -> timeAgo() plugin: @bychloethemes
@@ -183,8 +183,7 @@
     <link rel="preconnect" href="//fonts.googleapis.com">
     <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
     <link href="//fonts.googleapis.com/css2?family={select:Font}:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link href="//unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
-    <script src="//unpkg.com/feather-icons"></script>
+    <link href="//dl.dropbox.com/s/4ql1f9goumc33g0/feather-icons.css" rel="stylesheet">
 
     <!-- jquery -->
 
@@ -192,13 +191,21 @@
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-    <!-- OverlayScrollbars -->
+    <!--
+        NPF images fix v3.0 by @glenthemes [2021]
+        💌 git.io/JRBt7
+        --->
 
-    <link type="text/css" href="//unpkg.com/overlayscrollbars@1.13.1/css/OverlayScrollbars.min.css" rel="stylesheet" />
-    <link type="text/css" href="https://kingsora.github.io/OverlayScrollbars/etc/os-theme-thin-dark.css"
-        rel="stylesheet" />
-    <script type="text/javascript" src="//unpkg.com/overlayscrollbars@1.13.1/js/jquery.overlayScrollbars.min.js">
-    </script>
+    <script src="//npf-images-v3.github.io/script.js"></script>
+    <link rel="stylesheet" href="//npf-images-v3.github.io/recon.css">
+
+    <style tmblr-npf>
+        :root {
+            --NPF-Caption-Spacing: {select:content padding}px;
+            --NPF-Image-Spacing: {select:photoset gutter}px;
+        }
+    </style>
+
 </head>
 
 <style type="text/css">
@@ -288,7 +295,7 @@ a {
     color: {color:link};
 }
 
-/* tooltip */
+/* tooltips */
 
 .tooltipster-borderless .tooltipster-box {
     background-color: rgba({RGBcolor:tooltip background}, 0.85) !important;
@@ -301,6 +308,17 @@ a {
     color: {color:tooltip content} !important;
     font-size: 0.9em;
     text-transform: lowercase;
+}
+
+.tooltipster-sidetip.tooltipster-noir.tooltipster-noir-customized .tooltipster-box {
+	background: {color:post background};
+	border: 1px solid {color:post border};
+	border-radius: {select:content border radius}px;
+    box-shadow: 0 0 8px 1px rgba({RGBcolor:post border}, 0.85);
+}
+
+.tooltipster-sidetip.tooltipster-noir.tooltipster-noir-customized .tooltipster-content {
+	padding: 0;
 }
 
 {block:ifcustomscrollbar}
@@ -428,47 +446,58 @@ nav {
     position: relative;
 }
 
-.menu-label::before {
-    content: "\ea83";
+.menu-label::before,
+.menu-label::after {
     background: transparent;
-    width: 11px;
-    height: 11px;
-    overflow: hidden;
-    font: normal normal normal 11px "boxicons" !important;
+    display: block;
+    width: 1em;
+    height: 1em;
+    color: {color:titles};
+    font: normal normal normal 1em/1em 'feather' !important;
     position: absolute;
-    top: 50%;
+    top: calc({select:content padding}px / 2);
     right: calc({select:content padding}px / 2);
-    transform: translateY(-50%);
 }
 
-#menu:checked + .menu-label::before {
-    content: "\ebcf";
+.menu-label::before {
+    content: '\e933';
+    transform: translateY(-35%);
+}
+
+.menu-label::after {
+    content: '\e930';
+    transform: translateY(35%);
 }
 
 .menu-label:hover {
     cursor: pointer;
 }
 
-.menu-dropdown {
+.menu-contents {
     display: none;
-    width: 100%;
-    max-height: 200px;
-    overflow-y: scroll;
-    position: absolute;
-    z-index: 5;
-    left: 0;
-}
-
-#menu:checked ~ .menu-dropdown {
-    display: block;
 }
 
 .menu-link {
     background: {color:post background};
     display: block;
+    width: {select:sidebar width}px;
     padding: calc({select:content padding}px / 2);
+    box-sizing: border-box;
     color: {color:text};
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     text-transform: capitalize;
+}
+
+.menu-link:first-child {
+    border-top-left-radius: {select:content border radius}px;
+    border-top-right-radius: {select:content border radius}px;
+}
+
+.menu-link:last-child {
+    border-bottom-left-radius: {select:content border radius}px;
+    border-bottom-right-radius: {select:content border radius}px;
 }
 
 .menu-link:hover {
@@ -500,7 +529,7 @@ nav {
     transform: translateY(50%);
 }
 
-.search-button svg {
+.search-button .feather {
     display: block;
     width: 14px;
     height: 14px;
@@ -669,7 +698,7 @@ article:last-of-type {
     color: {color:link border};
 }
 
-.post_link .bx {
+.post_link .feather {
     display: block;
     width: 26px;
     height: 26px;
@@ -1006,7 +1035,7 @@ a.user {
     transform: translate(-50%, -50%);
 }
 
-.post_pinned .icon svg {
+.post_pinned .icon .feather {
     display: block;
     width: 18px;
     height: 18px;
@@ -1157,7 +1186,7 @@ ol.notes li.note.original_post::before {
     width: 16px;
     height: 16px;
     box-sizing: border-box;
-    font: normal normal normal 16px/1 'boxicons' !important;
+    font: normal normal normal 16px/1 'feather' !important;
     color: rgba({RGBcolor:titles}, 0.65);
     text-transform: none;
     speak: none;
@@ -1167,27 +1196,27 @@ ol.notes li.note.original_post::before {
 }
 
 ol.notes li.note.like::before {
-    content: '\ed6d' !important;
+    content: '\e97f' !important;
 }
 
 ol.notes li.note.reblog::before {
-    content: "\ee42" !important;
+    content: "\e9c6" !important;
 }
 
 ol.notes li.note.reply::before {
-    content: '\ee40' !important;
+    content: '\e94b' !important;
 }
 
 ol.notes li.note.with_commentary::before {
-    content: '\ecdd' !important;
+    content: '\e99b' !important;
 }
 
 ol.notes li.note.post_attribution::before {
-    content: '\ece7';
+    content: '\e949';
 }
 
 ol.notes li.note.original_post::before {
-    content: '\eec6' !important;
+    content: '\e9e3' !important;
 }
 
 ol.notes li.note {
@@ -1279,7 +1308,7 @@ footer {
     box-shadow: none !important;
 }
 
-.pagination-block a:not(.active) .bx {
+.pagination-block a:not(.active) .feather {
     display: none;
 }
 
@@ -1291,11 +1320,11 @@ footer {
     box-shadow: calc(({select:box shadow}px / 2) * -1) calc({select:box shadow}px / 2) 0 0 rgba({RGBcolor:post border}, 0.45);
 }
 
-.pagination-block a.next .bx {
+.pagination-block a.next .feather {
     margin-left: {select:box shadow}px;
 }
 
-.pagination-block a.prev .bx {
+.pagination-block a.prev .feather {
     margin-right: {select:box shadow}px;
 }
 
@@ -1349,7 +1378,7 @@ footer {
         transform: translate(0, 0);
     }
 
-    .post_pinned .icon svg {
+    .post_pinned .icon .feather {
         width: 13px;
         height: 13px;
     }
@@ -1402,14 +1431,14 @@ footer {
         <![endif]-->
 
     {block:ifbacktotop}
-    <a class="button_a top" href="#" title="back to top">
-        <i data-feather="chevron-up"></i>
+    <a class="button_a top" href="#" title="{lang:back to top}">
+        <i class="feather icon-chevron-up"></i>
     </a>
     {/block:ifbacktotop}
 
     {block:ifshowcontrolsonhover}
     <div class="button_b cc">
-        <i data-feather="plus"></i>
+        <i class="feather icon-plus"></i>
     </div>
     {/block:ifshowcontrolsonhover}
 
@@ -1433,23 +1462,26 @@ footer {
                 </div>
 
                 <nav class="sidebar_block">
-                    <input type="checkbox" id="menu" name="menu-control" hidden />
-                    <label class="menu-label box-shadow border rounded" for="menu">{lang:navigate}</label>
-
-                    <div class="menu-dropdown menu-despegable border rounded">
-                        <a class="menu-link" href="/">{lang:home}</a>
-                        {block:AskEnabled}{block:ifasktitle}<a class="menu-link" href="{text:ask url}">{text:ask title}</a>{/block:ifasktitle}{/block:AskEnabled}
-                        {block:iflink1title}<a class="menu-link" href="{text:link1 url}">{text:link1 title}</a>{/block:iflink1title}
-                        {block:iflink2title}<a class="menu-link" href="{text:link2 url}">{text:link2 title}</a>{/block:iflink2title}
-                        {block:iflink3title}<a class="menu-link" href="{text:link3 url}">{text:link3 title}</a>{/block:iflink3title}
-                        {block:iflink4title}<a class="menu-link" href="{text:link4 url}">{text:link4 title}</a>{/block:iflink4title}
-                        {block:iflink5title}<a class="menu-link" href="{text:link5 url}">{text:link5 title}</a>{/block:iflink5title}
-                        {block:iflink6title}<a class="menu-link" href="{text:link6 url}">{text:link6 title}</a>{/block:iflink6title}
-                        {block:iflink7title}<a class="menu-link" href="{text:link7 url}">{text:link7 title}</a>{/block:iflink7title}
-                        {block:ifarchivelink}<a class="menu-link" href="/archive">{lang:archive}</a>{/block:ifarchivelink}
-                        {block:ifrandomlink}<a class="menu-link" href="/random">{lang:random}</a>{/block:ifrandomlink}
+                    <div class="menu-label box-shadow border rounded"
+                        data-tooltip-content="#tooltip_content">
+                        {lang:Navigate}
                     </div>
 
+                    <div class="menu-contents border rounded">
+                        <span id="tooltip_content">
+                            <a class="menu-link" href="/">{lang:home}</a>
+                            {block:AskEnabled}{block:ifasktitle}<a class="menu-link" href="{text:ask url}">{text:ask title}</a>{/block:ifasktitle}{/block:AskEnabled}
+                            {block:iflink1title}<a class="menu-link" href="{text:link1 url}">{text:link1 title}</a>{/block:iflink1title}
+                            {block:iflink2title}<a class="menu-link" href="{text:link2 url}">{text:link2 title}</a>{/block:iflink2title}
+                            {block:iflink3title}<a class="menu-link" href="{text:link3 url}">{text:link3 title}</a>{/block:iflink3title}
+                            {block:iflink4title}<a class="menu-link" href="{text:link4 url}">{text:link4 title}</a>{/block:iflink4title}
+                            {block:iflink5title}<a class="menu-link" href="{text:link5 url}">{text:link5 title}</a>{/block:iflink5title}
+                            {block:iflink6title}<a class="menu-link" href="{text:link6 url}">{text:link6 title}</a>{/block:iflink6title}
+                            {block:iflink7title}<a class="menu-link" href="{text:link7 url}">{text:link7 title}</a>{/block:iflink7title}
+                            {block:ifarchivelink}<a class="menu-link" href="/archive">{lang:archive}</a>{/block:ifarchivelink}
+                            {block:ifrandomlink}<a class="menu-link" href="/random">{lang:random}</a>{/block:ifrandomlink}
+                        </span>
+                    </div>
                 </nav>
 
                 {block:ifshowsearchbar}
@@ -1457,7 +1489,7 @@ footer {
                     <input type="text" class="query" placeholder="{lang:search keywords}">
 
                     <button type="submit" class="search-button">
-                        <i data-feather="search"></i>
+                        <i class="feather icon-search"></i>
                     </button>
                 </form>
                 {/block:ifshowsearchbar}
@@ -1466,13 +1498,13 @@ footer {
 
         <section>
 
-            {block:Posts}
+            {block:posts inlineMediaWidth="1280" inlineNestedMediaWidth="1280"}
 
             <article id="{postID}" class="post box-shadow border rounded" post-type="{PostType}">
 
                 {block:PinnedPostLabel}
                 <div class="post_pinned">
-                    <span class="icon"><i data-feather="map-pin"></i></span>
+                    <span class="icon"><i class="feather icon-map-pin"></i></span>
                     <span class="pinned-text">{lang:pinned post}</span>
                 </div>
                 {/block:PinnedPostLabel}
@@ -1575,7 +1607,7 @@ footer {
 
                     {block:Link}
                     <a class="post_link border rounded" href="{URL}" {Target}>
-                        <i class="bx bx-link"></i>
+                        <i class="feather icon-link"></i>
 
                         <div class="link-contents">
                             <div class="title">{Name}</div>
@@ -1776,7 +1808,7 @@ footer {
                 {block:date}
                 <div class="post_permalink">
                     <a class="like-b" href="#">{block:English}Like{/block:English}{block:German}Liken{/block:German}{block:French}J'aime{/block:French}{block:Italian}Mi piace{/block:Italian}{block:Japanese}スキ{/block:Japanese}{block:Turkish}Beğen{/block:Turkish}{block:Spanish}Me gusta{/block:Spanish}{block:Russian}Нравится{/block:Russian}{block:Polish}Lubię{/block:Polish}{block:PortuguesePT}Gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir{/block:PortugueseBR}{block:Dutch}Vind ik leuk{/block:Dutch}{block:Korean}좋아요{/block:Korean}{block:ChineseSimplified}喜欢{/block:ChineseSimplified}{block:ChineseTraditional}喜歡{/block:ChineseTraditional}{block:ChineseHK}喜歡{/block:ChineseHK}{block:Indonesian}Suka{/block:Indonesian}{block:Hindi}पसंद करें{/block:Hindi}</a>
-                    <a href="#">{block:English}Reblog{/block:English}{block:German}Rebloggen{/block:German}{block:French}Rebloguer{/block:French}{block:Italian}Reblogga{/block:Italian}{block:Japanese}リブログ{/block:Japanese}{block:Turkish}Yeniden Blogla{/block:Turkish}{block:Spanish}Rebloguear{/block:Spanish}{block:Russian}Реблог{/block:Russian}{block:Polish}Rebloguj{/block:Polish}{block:PortuguesePT}Reblogar{/block:PortuguesePT}{block:PortugueseBR}Reblogar{/block:PortugueseBR}{block:Dutch}Rebloggen{/block:Dutch}{block:Korean}리블로그{/block:Korean}{block:ChineseSimplified}转发{/block:ChineseSimplified}{block:ChineseTraditional}轉格{/block:ChineseTraditional}{block:ChineseHK}轉載{/block:ChineseHK}{block:Indonesian}Reblog{/block:Indonesian}{block:Hindi}रीब्लॉग करेंे{/block:Hindi}</a>
+                    <a href="{reblogurl}">{block:English}Reblog{/block:English}{block:German}Rebloggen{/block:German}{block:French}Rebloguer{/block:French}{block:Italian}Reblogga{/block:Italian}{block:Japanese}リブログ{/block:Japanese}{block:Turkish}Yeniden Blogla{/block:Turkish}{block:Spanish}Rebloguear{/block:Spanish}{block:Russian}Реблог{/block:Russian}{block:Polish}Rebloguj{/block:Polish}{block:PortuguesePT}Reblogar{/block:PortuguesePT}{block:PortugueseBR}Reblogar{/block:PortugueseBR}{block:Dutch}Rebloggen{/block:Dutch}{block:Korean}리블로그{/block:Korean}{block:ChineseSimplified}转发{/block:ChineseSimplified}{block:ChineseTraditional}轉格{/block:ChineseTraditional}{block:ChineseHK}轉載{/block:ChineseHK}{block:Indonesian}Reblog{/block:Indonesian}{block:Hindi}रीब्लॉग करेंे{/block:Hindi}</a>
 
                     {block:NoteCount}<a class="notecount" href="{permalink}" title="{NoteCountWithLabel}">{NoteCount}</a>{/block:NoteCount}
                 </div>
@@ -1855,11 +1887,11 @@ footer {
                 {block:Pagination}
                 <div class="pagination-block">
                     <a {block:previouspage}class="active prev" href="{previouspage}"{/block:previouspage}>
-                        <span class="bx bxs-left-arrow-alt box-shadow border rounded"></span>
+                        <span class="feather icon-arrow-left box-shadow border rounded"></span>
                         <span class="box-shadow border rounded">{lang:prev}</span>
                     </a><a {block:nextpage}class="active next" href="{nextpage}"{/block:nextpage}>
                         <span class="box-shadow border rounded">{lang:next}</span>
-                        <span class="bx bxs-right-arrow-alt box-shadow border rounded"></span>
+                        <span class="feather icon-arrow-right box-shadow border rounded"></span>
                     </a>
                 </div>
                 {/block:Pagination}
@@ -1876,50 +1908,19 @@ footer {
 
     <!-- scripts -->
 
-    <script type="text/javascript" src="//cdn.jsdelivr.net/gh/marcj/css-element-queries/src/ResizeSensor.js"></script>
-    <script src="//unpkg.com/sticky-sidebar@3.3.1/dist/jquery.sticky-sidebar.js"></script>
-    <link href="//static.tumblr.com/0podkko/xIbplezmo/modified_photosets.css" rel="stylesheet">
-    <script src="//static.tumblr.com/0podkko/jfMplm3f8/modified_photosets.js"></script>
-    <link href="//dl.dropbox.com/s/bnoj86mka0bkplb/npf-override.css" rel="stylesheet">
-    <script src="//dl.dropbox.com/s/vwrm94pcg4c9e71/npf-evenize.js"></script>
-    <script type="text/javascript" src="//static.tumblr.com/i5s2zks/9Acok8oo2/bct-timeago.min.js"></script>
-    <script src="//cdn.jsdelivr.net/gh/robinpx/tumblr/scripts/flexibleFrames/flexibleFrames.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="//unpkg.com/tooltipster/dist/css/tooltipster.bundle.min.css" />
-    <link rel="stylesheet" type="text/css"
-        href="//unpkg.com/tooltipster-follower/dist/css/tooltipster-follower.min.css" />
-    <script type="text/javascript" src="//unpkg.com/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
-    <script type="text/javascript" src="//unpkg.com/tooltipster-follower/dist/js/tooltipster-follower.min.js"></script>
-
     <script>
-        var bodyStyles = window.getComputedStyle(document.body);
-        var $body = $("body");
-        var $textholder = $body.find("p");
-        var $container = $(".post");
-        var $caption = $container.find(".comment");
-        var $audio = $("iframe.tumblr_audio_player");
-        var margintop = {select:post spacing} + {select:post spacing};
-        var menutop = $('.menu-label').outerHeight() + {select:box shadow};
-
-        // icons
-        feather.replace();
-
-        // photosets
-        initPhotosets();
-
         $(document).ready(function () {
-            $(".menu-dropdown").css({
-                top: menutop,
-            });
-
-            // remove empty holders
-            $textholder
+            $("p, div")
                 .filter(function () {
                     return $.trim(this.innerHTML) == "";
                 })
                 .remove();
+        });
+    </script>
 
-            {block:ifbacktotop}
-            // back to top
+    {block:ifbacktotop}
+    <script>
+        $(document).ready(function () {
             $(window).scroll(function () {
                 if ($(this).scrollTop() > 100) {
                     $('.top').fadeIn();
@@ -1934,21 +1935,32 @@ footer {
                 }, 1000);
                 return false;
             });
-            {/block:ifbacktotop}
+        });
+    </script>
+    {/block:ifbacktotop}
 
-            {block:ifshowsearchbar}
-            // search script
+    {block:ifshowsearchbar}
+    <script>
+        $(document).ready(function () {
             $('.search').submit(function(event){
                 var value = $('input:first').val();
                 location.replace('http://{Name}.tumblr.com/tagged/' + value);
             });
-            {/block:ifshowsearchbar}
+        });
+    </script>
+    {/block:ifshowsearchbar}
 
-            // sticky sidebar
+    <script type="text/javascript" src="//cdn.jsdelivr.net/gh/marcj/css-element-queries/src/ResizeSensor.js"></script>
+    <script src="//unpkg.com/sticky-sidebar@3.3.1/dist/jquery.sticky-sidebar.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var margintop = {select:post spacing} + {select:post spacing};
+
             if ($(window).width() > 1001) {
                 $('aside').stickySidebar({
                     topSpacing: margintop,
-                    bottomSpacing: 80
+                    bottomSpacing: {select:post spacing}
                 });
             };
 
@@ -1958,25 +1970,42 @@ footer {
                 } else {
                     $('aside').stickySidebar({
                         topSpacing: margintop,
-                        bottomSpacing: 80
+                        bottomSpacing: {select:post spacing}
                     });
                 }
             });
+        });
+    </script>
 
-            // audio script
+    <script>
+        $(document).ready(function () {
+            var $audio = $("iframe.tumblr_audio_player");
+
             $audio.load(function () {
                 $(this).contents().find('head').append('<style type="text/css">' +
                     '.audio-player { background: transparent; color: rgb(' + bodyStyles.getPropertyValue('--color-audio-content') + ') !important; }' +
                     '.audio-player .progress { display:none; }' +
                     '</style>');
             });
+        });
+    </script>
 
-            // time script
+    <link href="//static.tumblr.com/0podkko/xIbplezmo/modified_photosets.css" rel="stylesheet">
+    <script src="//static.tumblr.com/0podkko/jfMplm3f8/modified_photosets.js"></script>
+
+    <script>initPhotosets();</script>
+
+    <script type="text/javascript" src="//static.tumblr.com/i5s2zks/9Acok8oo2/bct-timeago.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
             $(".timeago").timeAgo({
                 time: "letter",
             });
 
             // round notes
+            var $container = $('.post');
+
             $container.find(".notecount").each(function () {
                 var n = $(this).html().split(" ")[0].replace(/,/g, "");
                 if (n > 999) {
@@ -1984,10 +2013,15 @@ footer {
                     $(this).text(n + "k");
                 }
             });
+        });
+    </script>
 
-            // responsive videos
+    <script src="//cdn.jsdelivr.net/gh/robinpx/tumblr/scripts/flexibleFrames/flexibleFrames.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
             function flexFrame() {
-                $caption.each(function () {
+                $(".comment").each(function () {
                     $(this).find("iframe").wrap('<div class="iframe-flex"></div>');
                     flexibleFrames($(".iframe-flex"));
                 });
@@ -1995,19 +2029,44 @@ footer {
             }
 
             $(document).ready(flexFrame);
+        });
+    </script>
 
-            // tooltips
-            $("[title]").tooltipster({
-                theme: "tooltipster-borderless",
-                plugins: ["follower"],
-                maxWidth: 160,
-                offset: [0, -25],
-                arrow: false,
+    <link rel="stylesheet" type="text/css" href="//unpkg.com/tooltipster/dist/css/tooltipster.bundle.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="//unpkg.com/tooltipster-follower/dist/css/tooltipster-follower.min.css" />
+    <script type="text/javascript" src="//unpkg.com/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+    <script type="text/javascript" src="//unpkg.com/tooltipster-follower/dist/js/tooltipster-follower.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.menu-label').tooltipster({
+                animation: 'grow',
                 animationDuration: 300,
                 delay: 100,
+                theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
+                maxWidth: {select:sidebar width},
+                side: 'bottom',
+                trigger: 'click',
+                arrow: false,
+                interactive: true,
+                contentAsHTML: true
+            });
+
+            //tooltips
+            $('[title]').tooltipster({
+                animationDuration: 300,
+                delay: 100,
+                theme: 'tooltipster-borderless',
+                plugins: ["follower"],
+                maxWidth: sidebarWidth,
+                offset: [0, -25],
+                arrow: false
             });
         });
+    </script>
 
+    <script>
         // remove tumblr's redirects
         function noHrefLi() {
             var linkSet = document.querySelectorAll('a[href*="href.li/?"]');
@@ -2016,13 +2075,6 @@ footer {
                 linkSet[i].setAttribute("href", theLink);
             });
         }
-
-        // OverlayScrollbar
-        document.addEventListener("DOMContentLoaded", function () {
-            OverlayScrollbars(document.querySelectorAll('.menu-despegable'), {
-                className: 'os-theme-thin-dark',
-            });
-        });
     </script>
 
 </body>
