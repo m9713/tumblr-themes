@@ -14,15 +14,16 @@
 
     credits:
 
-    -> fonts: google fonts
-    -> icons: feathericons css font by icomoon
-    -> expandedtumblrlocalization: @boscoxvi
-    -> short notes: @shythemes
-    -> timeAgo() plugin: @bychloethemes
-    -> photosets: @annasthms
-    -> responsive tumblr videos and external iframes: @nouvae
-    -> npf mobile photoset fix: @glenthemes
-    -> remove tumblr’s redirect: @magnusthemes
+    -> fonts : google fonts
+    -> icons : feathericons css font by icomoon
+    -> expandedtumblrlocalization : @boscoxvi
+    -> short notes : @shythemes
+    -> timeAgo() plugin : @bychloethemes
+    -> photosets : @annasthms
+    -> responsive tumblr videos and external iframes : @nouvae
+    -> npf mobile photoset fix : @glenthemes
+    -> remove tumblr’s redirect : @magnusthemes
+    -> tooltips : tooltipster & tippy.js
 
     full credits at: aurthms.tumblr.com/credits
 
@@ -238,7 +239,7 @@ iframe.tmblr-iframe {
     padding-right: {select:content padding}px;
     right: 0;
 {/block:ifshowcontrolsonhover}
-    top: calc({select:content padding}px - 4px);
+    top: calc({select:content padding}px - 10px);
 {block:ifnotshowcontrolsonhover}
     right: 12px;
 {/block:ifnotshowcontrolsonhover}
@@ -264,7 +265,6 @@ iframe.tmblr-iframe:hover {
 {block:ifdarktumblrcontrols}
     color: #111;
 {/block:ifdarktumblrcontrols}
-    font-size: 20px;
     top: {select:content padding}px;
     right: {select:content padding}px;
 }
@@ -311,15 +311,15 @@ a {
     text-transform: lowercase;
 }
 
-.tooltipster-sidetip.tooltipster-noir.tooltipster-noir-customized .tooltipster-box {
+.tippy-box[data-theme~='custom-tippy'] {
 	background: {color:post background};
 	border: 1px solid {color:post border};
 	border-radius: {select:content border radius}px;
     box-shadow: 0 0 8px 1px rgba({RGBcolor:post border}, 0.85);
 }
 
-.tooltipster-sidetip.tooltipster-noir.tooltipster-noir-customized .tooltipster-content {
-	padding: 0;
+.tippy-box[data-theme~='custom-tippy'] .tippy-content {
+    padding: 0;
 }
 
 {block:ifcustomscrollbar}
@@ -1004,6 +1004,36 @@ a.user {
     border-radius: 10%;
 }
 
+.deactivated,
+a.user:not([href]) {
+    color: {color:text} !important;
+    position: relative;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.deactivated::after,
+a.user:not([href])::after {
+    content: "{block:English}Deactivated{/block:English}{block:German}Deaktiviert{/block:German}{block:French}Désactivé{/block:French}{block:Italian}Disattivato{/block:Italian}{block:Japanese}無効化{/block:Japanese}{block:Turkish}Kapatıldı{/block:Turkish}{block:Spanish}Desactivado{/block:Spanish}{block:Russian}Деактивировано{/block:Russian}{block:Polish}deaktywowano{/block:Polish}{block:PortuguesePT}Desativado{/block:PortuguesePT}{block:PortugueseBR}Desativado{/block:PortugueseBR}{block:Dutch}Gedeactiveerd{/block:Dutch}{block:Korean}사용 안 함{/block:Korean}{block:ChineseSimplified}已关闭{/block:ChineseSimplified}{block:ChineseTraditional}已停用{/block:ChineseTraditional}{block:ChineseHK}已停用{/block:ChineseHK}{block:Indonesian}Dinonaktifkan{/block:Indonesian}{block:Hindi}निष्क्रिय{/block:Hindi}";
+    display: inline-block;
+    vertical-align: baseline;
+    margin: 0 0 0 5px;
+    opacity: 0.25;
+    color: {color:text};
+    text-transform: lowercase;
+    transition: opacity 0.6s;
+}
+
+.deactivated:hover::after,
+a.user:not([href]):hover::after {
+    opacity: 0.75;
+    transition: opacity 0.6s;
+}
+
 /* post permalink */
 
 .post_pinned {
@@ -1041,8 +1071,8 @@ a.user {
     width: 18px;
     height: 18px;
     margin: auto;
-    color: white;
-    font-size: 18px;
+    color: {color:post background};
+    font-size: 16px;
     text-align: center;
 }
 
@@ -1900,7 +1930,7 @@ footer {
 
                 <div class="content-block">
                     <div class="text">
-                        © 2021 <a href="//atpreviews.tumblr.com/preview/leo">Leo</a> Theme by <a href="//aurthms.tumblr.com">aurthms</a>. {lang:powered by tumblr 2}.
+                        © 2021 <a href="//atpreviews.tumblr.com/preview/leo">Leo Theme</a> by <a href="//aurthms.tumblr.com">aurthms</a>. {lang:powered by tumblr 2}.
                     </div>
                 </div>
             </div>
@@ -2034,38 +2064,45 @@ footer {
         });
     </script>
 
-    <link rel="stylesheet" type="text/css" href="//unpkg.com/tooltipster/dist/css/tooltipster.bundle.min.css" />
-    <link rel="stylesheet" type="text/css"
-        href="//unpkg.com/tooltipster-follower/dist/css/tooltipster-follower.min.css" />
+    <link rel="stylesheet" href="//unpkg.com/tippy.js@6/animations/scale.css"/>
+    <script src="//unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="//unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+    <script src="//unpkg.com/@popperjs/core@2"></script>
+    <script src="//unpkg.com/tippy.js@6"></script>
+
+    <script>
+        tippy('.menu-label', {
+            content: document.getElementById('tooltip_content'),
+            animation: 'scale',
+            duration: 300,
+            delay: 100,
+            theme: 'custom-tippy',
+            maxWidth: {select:sidebar width},
+            placement: 'bottom',
+            trigger: 'click',
+            arrow: false,
+            allowHTML: true,
+            interactive: true,
+        });
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="//unpkg.com/tooltipster/dist/css/tooltipster.bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="//unpkg.com/tooltipster-follower/dist/css/tooltipster-follower.min.css"/>
     <script type="text/javascript" src="//unpkg.com/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script type="text/javascript" src="//unpkg.com/tooltipster-follower/dist/js/tooltipster-follower.min.js"></script>
 
     <script>
-        $(document).ready(function () {
-            $('.menu-label').tooltipster({
-                animation: 'grow',
-                animationDuration: 300,
-                delay: 100,
-                theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
-                maxWidth: {select:sidebar width},
-                side: 'bottom',
-                trigger: 'click',
-                arrow: false,
-                interactive: true,
-                contentAsHTML: true
-            });
-
-            //tooltips
-            $('[title]').tooltipster({
-                animationDuration: 300,
-                delay: 100,
-                theme: 'tooltipster-borderless',
-                plugins: ["follower"],
-                maxWidth: sidebarWidth,
-                offset: [0, -25],
-                arrow: false
-            });
+    $(document).ready(function() {
+        $('[title]').tooltipster({
+            theme:'tooltipster-borderless',
+            plugins:["follower"],
+            maxWidth:160,
+            offset:[0, -25],
+            arrow:false,
+            animationDuration:300,
+            delay:100
         });
+    });
     </script>
 
     <script>
