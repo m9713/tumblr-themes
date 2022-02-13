@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<!-- 
+
+    THEME PAGE : MOVE
+    made by    : http://aurthms.tumblr.com/
+
+    ! CHECK http://aurthms.tumblr.com/move/info FOR CUSTOMIZATION HELP
+
+    --
+
+    Credits :
+
+    * Font                     : http://github.com/bluescan/proggyfonts
+    * AESTHETIC.css            : http://torch2424.github.io/aesthetic-css/
+    * Draggabilly              : http://draggabilly.desandro.com/
+    * Windows 95-era scrollbar : http://codepen.io/louh/pen/oZJQvm
+
+ -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="alternate" href="{RSS}" type="application/rss+xml" title="RSS">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="//unpkg.com/aesthetic-css@1.0.1/aesthetic.css">
+    <link rel="stylesheet" href="//unpkg.com/colors.css@3.0.0/css/colors.css">
+
+    <!-- FONT -->
+
+    <link href="//fonts.cdnfonts.com/css/proggy-clean" rel="stylesheet">
+
+    <!-- JQUERY -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.13.1/themes/smoothness/jquery-ui.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.13.1/jquery-ui.min.js"></script>
+
+</head>
+
+<style type="text/css">
+
+:root {
+    --Bold-Font: 700;
+    --Font-Size: 16px;
+    --Font-Family: 'ProggyCleanTT', monospace;
+
+    /* WIDTHS & MARGINS */
+
+    --Content-Width: 540px;
+    --Box-Width: 290px;
+    --AskBox-Width: 360px;
+
+    --Content-Padding: 16px;
+
+    --Background-Grid-Width: 3em;
+    --Link-Border-Width: 2px;
+
+    /* COLORS */
+
+    --Color-Background: #FF00FE;
+    --Color-Background-Grid: rgba(237, 0, 12, 0.7);
+    --Color-Background-Grid-Shadow: rgba(10, 132, 231, 0.7);
+
+    --Color-Text: #111111;
+    --Color-Link: #000080;
+}
+
+/* TUMBLR CONTROLS */
+
+iframe.tmblr-iframe,
+iframe.tmblr-iframe:hover {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    display: none !important;
+}
+
+/* CSS RESET */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* BODY */
+
+body {
+    background-color: var(--Color-Background);
+    background-image: linear-gradient(var(--Color-Background-Grid) 0.2em, transparent 0.2em),
+        linear-gradient(90deg, var(--Color-Background-Grid) 0.2em, transparent 0.2em),
+        linear-gradient(90deg, var(--Color-Background-Grid-Shadow) 0.4em, transparent 0.4em);
+    background-size: var(--Background-Grid-Width) var(--Background-Grid-Width);
+    color: var(--Color-Text);
+    font: var(--Font-Size) var(--Font-Family);
+    line-height: 1.5;
+    letter-spacing: 0.05em !important;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* LINKS */
+
+a,
+a:link,
+a:visited,
+a:active,
+a:hover {
+    outline: 1px dashed transparent !important;
+    background: transparent linear-gradient(var(--Color-Link), var(--Color-Link)) 0 96%/100% var(--Link-Border-Width) no-repeat;
+    color: var(--Color-Link);
+    text-decoration: none;
+    -moz-transition: 0.3s ease-in;
+    -webkit-transition: 0.3s ease-in;
+    -o-transition: 0.3s ease-in;
+    transition: 0.3s ease-in;
+}
+
+a:focus {
+    outline: 1px dashed var(--Color-Link) !important;
+}
+
+a:hover {
+    background: transparent linear-gradient(135deg, pink 0%, powderblue 100%) 0 96%/100% var(--Link-Border-Width) no-repeat;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+}
+
+::-webkit-scrollbar-track {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAFElEQVQIW2M4fPz0////GYAYyAIASnoKpV3w4kgAAAAASUVORK5CYII=");
+    image-rendering: pixelated;
+}
+
+::-webkit-scrollbar-track:active {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAAEElEQVQIW2No6+pjgAAgCwAWogM9VKrgGQAAAABJRU5ErkJggg==");
+}
+
+::-webkit-scrollbar-thumb {
+    border-top: 1px solid #c3c7cb;
+    border-left: 1px solid #c3c7cb;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    box-shadow: inset 1px 1px 0 0 white, inset -1px -1px 0 0 #868a8e;
+    width: 16px;
+    height: 16px;
+    background-color: #c3c7cb;
+    z-index: 1;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: #c3c7cb;
+}
+
+::-webkit-resizer {
+    width: 16px;
+    height: 16px;
+    background-color: #c3c7cb;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAN0lEQVR4Ae3MgQUAMBRDwU5fFF05lb/CARTBw2Ulof0DxPtcwp3hNuEYnjbcEW4TjuFpwx3h9gMWGgZ2Y/PT2gAAAABJRU5ErkJggg==");
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+}
+
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-button {
+    border-top: 1px solid #c3c7cb;
+    border-left: 1px solid #c3c7cb;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    box-shadow: inset 1px 1px 0 0 white, inset -1px -1px 0 0 #868a8e;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-color: #c3c7cb;
+    image-rendering: pixelated;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+::-webkit-scrollbar-button:active,
+::-webkit-scrollbar-button:active {
+    background-position: 2px 2px;
+}
+
+::-webkit-scrollbar-button:horizontal:decrement,
+::-webkit-scrollbar-button:horizontal:decrement {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAQAAAD8fJRsAAAAHklEQVQY02NgoBT8xyX8H5fwf1zCpOjAYwceV1EEAAO2D/HsQ4vsAAAAAElFTkSuQmCC");
+}
+
+::-webkit-scrollbar-button:horizontal:increment,
+::-webkit-scrollbar-button:horizontal:increment {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAQAAAD8fJRsAAAAHUlEQVQY02NgIB/8xy3xH7fEf9wS/0nUQZqrKAYAK44P8ZRmzLQAAAAASUVORK5CYII=");
+}
+
+::-webkit-scrollbar-button:vertical:decrement,
+::-webkit-scrollbar-button:vertical:decrement {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGklEQVR4AWMYxuA/SYphmETFhDX9x4mHGQAAcL4P8dQiMq8AAAAASUVORK5CYII=");
+}
+
+::-webkit-scrollbar-button:vertical:increment,
+::-webkit-scrollbar-button:vertical:increment {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAQAAAD8fJRsAAAAF0lEQVQY02NgoBf4jwJxSOHQhcNAOgMAWWAP8Rv2U3UAAAAASUVORK5CYII=");
+}
+
+::-webkit-scrollbar-button:horizontal:increment:start,
+::-webkit-scrollbar-button:horizontal:increment:start {
+    display: none;
+}
+
+::-webkit-scrollbar-button:horizontal:decrement:end,
+::-webkit-scrollbar-button:horizontal:decrement:end {
+    display: none;
+}
+
+::-webkit-scrollbar-button:vertical:increment:start,
+::-webkit-scrollbar-button:vertical:increment:start {
+    display: none;
+}
+
+::-webkit-scrollbar-button:vertical:decrement:end,
+::-webkit-scrollbar-button:vertical:decrement:end {
+    display: none;
+}
+
+::-webkit-scrollbar-button:active,
+::-webkit-scrollbar-button:active {
+    border-top: 1px solid #868a8e;
+    border-left: 1px solid #868a8e;
+    border-bottom: 1px solid #868a8e;
+    border-right: 1px solid #868a8e;
+    box-shadow: none;
+}
+
+/* MAIN */
+
+main {
+    width: var(--Content-Width);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* CONTENT */
+
+#button_a:checked~.panel_a,
+#button_b:checked~.panel_b,
+#button_c:checked~.panel_c {
+    opacity: 1;
+    visibility: visible;
+}
+
+[class^="panel_"] {
+    display: block;
+    width: var(--Box-Width);
+    margin: 100px 0 0 calc((var(--Box-Width) / 2) * -1);
+    padding: 0;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+}
+
+.panel_askbox {
+    width: var(--AskBox-Width);
+    margin: 100px calc((var(--AskBox-Width) / 2) * -1) 0 0;
+    opacity: 1;
+    visibility: visible;
+    right: 0;
+    left: auto;
+}
+
+.handle {
+    cursor: move;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.title {
+    width: 100%;
+    font-weight: var(--Bold-Font);
+    letter-spacing: 0.1em !important;
+    text-align: center;
+}
+
+[class^="panel_"] #container {
+    display: block;
+    max-height: 360px;
+    overflow: scroll !important;
+    margin-top: 5px;
+}
+
+/* NAVIGATION */
+
+nav {
+    padding-bottom: 0 !important;
+}
+
+.nav-item {
+    list-style: none;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 var(--Content-Padding) 0 0;
+    padding: 0;
+}
+
+.nav-item:last-child {
+    margin-right: 0;
+}
+
+.nav-item a,
+[class^="label_"] {
+    background: transparent linear-gradient(var(--Color-Text), var(--Color-Text)) 0 86%/0.5em 1px no-repeat;
+    color: var(--Color-Text);
+    text-transform: capitalize;
+}
+
+[class^="label_"]:hover {
+    cursor: pointer;
+}
+
+#button_a:checked~#box-one nav .label_a,
+#button_b:checked~#box-one nav .label_b,
+#button_c:checked~#box-one nav .label_c {
+    background-image: none;
+    color: white;
+    font-weight: var(--Bold-Font);
+    letter-spacing: 0.07em !important;
+}
+
+/* LINK BUTTONS */
+
+#link-button {
+    display: inline-block;
+    width: calc((100% / 3) - 11px);
+    vertical-align: top;
+    margin: 5px 5px 5px 0;
+    position: relative;
+}
+
+#link-button:last-child {
+    margin-right: 0;
+}
+
+#link-button a {
+    background-image: none;
+    display: block;
+    color: var(--Color-Text);
+    font-weight: var(--Bold-Font);
+    letter-spacing: 0.07em !important;
+    text-align: center;
+}
+
+/* TEXT */
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+blockquote {
+    overflow-wrap: break-word;
+    margin: 1rem 0;
+}
+
+p:first-child {
+    margin-top: 0 !important;
+}
+
+pre,
+code {
+    white-space: pre-wrap;
+    word-break: break-word;
+    font: 0.9em 'Victor Mono', monospace !important;
+    line-height: 1.5;
+    letter-spacing: 0.05em !important;
+}
+
+blockquote {
+    padding-left: 1em;
+    border-left: 5px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to bottom, #10d7ae, #ff6ad5);
+}
+
+small,
+sub,
+sup {
+    font-size: 0.9em;
+}
+
+b,
+strong {
+    font-weight: var(--Bold-Font);
+    letter-spacing: 0.1em !important;
+}
+
+i,
+em {
+    font-style: italic;
+}
+
+.npf_color_joey {
+    color: #FF4136 !important;
+}
+
+.npf_color_monica {
+    color: #FF851B !important;
+}
+
+.npf_color_phoebe {
+    color: #FFDC00 !important;
+}
+
+.npf_color_ross {
+    color: #2ECC40 !important;
+}
+
+.npf_color_rachel {
+    color: #0074D9 !important;
+}
+
+.npf_color_chandler {
+    color: #B10DC9 !important;
+}
+
+.npf_color_niles {
+    color: #F012BE !important;
+}
+
+.npf_color_frasier {
+    color: #001f3f !important;
+}
+
+.npf_color_mr_big {
+    color: #111111 !important;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 860px) {
+
+    main {
+        width: calc(70vw);
+    }
+
+    [class^="panel_"] {
+        margin: 0 0 0 -80px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .panel_askbox {
+        width: 60%;
+        margin: 100px -80px 0 0;
+        top: 0;
+        transform: translateY(0);
+    }
+
+    .handle {
+        cursor: default;
+    }
+
+}
+
+</style>
+
+<body>
+
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <!-- MAIN -->
+
+    <main>
+
+        <!--    INPUT TAGS -->
+        <input hidden type="radio" name="box-control" id="button_a">
+        <input hidden type="radio" name="box-control" id="button_b" checked>
+        <input hidden type="radio" name="box-control" id="button_c">
+
+        <!-- IMAGE & NAVIGATION -->
+        <div id="box-one" class="aesthetic-windows-95-modal">
+            <!-- TITLE & CONTROLS -->
+            <div class="aesthetic-windows-95-modal-title-bar">
+                <div class="aesthetic-windows-95-modal-title-bar-text title">{name}</div>
+                <div class="aesthetic-windows-95-modal-title-bar-controls">
+                    <div class="aesthetic-windows-95-button-title-bar">
+                        <button disabled>X</button>
+                    </div>
+                </div>
+            </div><!-- //END TITLE & CONTROLS -->
+
+            <!-- NAVIGATION -->
+            <nav class="aesthetic-windows-95-modal-content">
+                <li class="nav-item">
+                    <a href="{blogurl}">{lang:Home}</a>
+                </li>
+                <li class="nav-item">
+                    <label for="button_a" class="label_a">Label A</label>
+                </li>
+                <li class="nav-item">
+                    <label for="button_b" class="label_b">Label B</label>
+                </li>
+                <li class="nav-item">
+                    <label for="button_c" class="label_c">Label C</label>
+                </li>
+                <li class="nav-item">
+                    <a href="//aurthms.tumblr.com/">Credit</a>
+                </li>
+            </nav><!-- //END NAVIGATION -->
+
+            <!-- IMAGE -->
+            <article class="aesthetic-windows-95-modal-content">
+                <img src="//static.tumblr.com/nuyvmrm/LtJqcvas6/14446002_1128442050582648_7929411903479268760_n.jpg"
+                    alt="image">
+            </article><!-- //END IMAGE -->
+        </div><!-- //END IMAGE & NAVIGATION -->
+
+        <!-- ASKBOX -->
+        <section class="panel_askbox draggable">
+            <div class="aesthetic-windows-95-modal">
+                <!-- TITLE & CONTROLS -->
+                <div class="aesthetic-windows-95-modal-title-bar handle">
+                    <div class="aesthetic-windows-95-modal-title-bar-text title">{AskLabel}</div>
+                    <div class="aesthetic-windows-95-modal-title-bar-controls">
+                        <div class="aesthetic-windows-95-button-title-bar">
+                            <button disabled>X</button>
+                        </div>
+                    </div>
+                </div><!-- //END TITLE & CONTROLS -->
+
+                <!-- CONTENT -->
+                <article class="aesthetic-windows-95-modal-content">
+                    <div>
+                        <iframe frameborder="0" scrolling="no" width="100%" height="190" src="//www.tumblr.com/ask_form/{name}.tumblr.com" style="background-color:transparent; overflow:hidden;" id="ask_form"></iframe>
+                    </div>
+                </article><!-- //END CONTENT -->
+            </div>
+        </section><!-- //END ASKBOX -->
+
+        <!-- PANEL A -->
+        <section class="panel_a draggable">
+            <div class="aesthetic-windows-95-modal">
+                <!-- TITLE & CONTROLS -->
+                <div class="aesthetic-windows-95-modal-title-bar handle">
+                    <div class="aesthetic-windows-95-modal-title-bar-text title">Title A</div>
+                    <div class="aesthetic-windows-95-modal-title-bar-controls">
+                        <div class="aesthetic-windows-95-button-title-bar">
+                            <button disabled>X</button>
+                        </div>
+                    </div>
+                </div><!-- //END TITLE & CONTROLS -->
+
+                <!-- CONTENT -->
+                <article id="container" class="aesthetic-windows-95-modal-content">
+                    <div>
+
+                        <!-- LINK BUTTON -->
+                        <div id="link-button" class="aesthetic-windows-95-button">
+                            <button>
+                                <a href="link-url">Link Title</a>
+                            </button>
+                        </div><!-- //END LINK BUTTON -->
+
+                    </div>
+                </article><!-- //END CONTENT -->
+            </div>
+        </section><!-- //END PANEL A -->
+
+        <!-- PANEL B -->
+        <section class="panel_b draggable">
+            <div class="aesthetic-windows-95-modal">
+                <!-- TITLE & CONTROLS -->
+                <div class="aesthetic-windows-95-modal-title-bar handle">
+                    <div class="aesthetic-windows-95-modal-title-bar-text title">Title B</div>
+                    <div class="aesthetic-windows-95-modal-title-bar-controls">
+                        <div class="aesthetic-windows-95-button-title-bar">
+                            <button disabled>X</button>
+                        </div>
+                    </div>
+                </div><!-- //END TITLE & CONTROLS -->
+
+                <!-- CONTENT -->
+                <article id="container" class="aesthetic-windows-95-modal-content">
+                    <div>
+
+                        <!-- 
+                            ! HERE GOES YOUR CONTENT
+                         -->
+
+                    </div>
+                </article><!-- //END CONTENT -->
+            </div>
+        </section><!-- //END PANEL B -->
+
+        <!-- PANEL C -->
+        <section class="panel_c draggable">
+            <div class="aesthetic-windows-95-modal">
+                <!-- TITLE & CONTROLS -->
+                <div class="aesthetic-windows-95-modal-title-bar handle">
+                    <div class="aesthetic-windows-95-modal-title-bar-text title">Title C</div>
+                    <div class="aesthetic-windows-95-modal-title-bar-controls">
+                        <div class="aesthetic-windows-95-button-title-bar">
+                            <button disabled>X</button>
+                        </div>
+                    </div>
+                </div><!-- //END TITLE & CONTROLS -->
+
+                <!-- CONTENT -->
+                <article id="container" class="aesthetic-windows-95-modal-content">
+                    <div>
+
+                        <!-- 
+                            ! HERE GOES YOUR CONTENT
+                         -->
+
+                    </div>
+                </article><!-- //END CONTENT -->
+            </div>
+        </section><!-- //END PANEL C -->
+
+    </main>
+
+    <!-- SCRIPTS -->
+
+    <script src="//unpkg.com/draggabilly@3/dist/draggabilly.pkgd.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        if ($(window).width() > 850) {
+            $('.draggable').draggabilly({
+                handle: '.handle'
+            });
+        };
+        $(window).on('resize', function () {
+            if ($(window).width() < 850) {
+                $('.draggable').draggabilly('destroy')
+            } else {
+                $('.draggable').draggabilly({
+                    handle: '.handle'
+                });
+            }
+        });
+
+        $('body').find('b').each(function () {
+            $('b').addClass('aesthetic-font-modifier-gradient-purple-blue');
+        });
+    });
+    </script>
+
+</body>
+
+</html>
