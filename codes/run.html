@@ -1,0 +1,2924 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html lang="{block:English}en{/block:English}{block:German}de{/block:German}{block:French}fr{/block:French}{block:Italian}it{/block:Italian}{block:Japanese}ja{/block:Japanese}{block:Turkish}tr{/block:Turkish}{block:Spanish}es{/block:Spanish}{block:Russian}ru{/block:Russian}{block:Polish}pl{/block:Polish}{block:PortuguesePT}pt-PT{/block:PortuguesePT}{block:PortugueseBR}pt-BR{/block:PortugueseBR}{block:Dutch}nl{/block:Dutch}{block:Korean}ko{/block:Korean}{block:ChineseSimplified}zh-CN{/block:ChineseSimplified}{block:ChineseTraditional}zh-TW{/block:ChineseTraditional}{block:ChineseHK}zh-HK{/block:ChineseHK}{block:Indonesian}id{/block:Indonesian}{block:Hindi}hi{/block:Hindi}">
+
+<!-- 
+
+    theme   : run
+    version : 2.1 (april, 2022)
+    made by : http://aurthms.tumblr.com
+
+    ---
+
+    credits :
+
+    * css reset                    : http://www.joshwcomeau.com/css/custom-css-reset
+    * fonts                        : google
+    * icons                        : http://feathericons.com
+    * photosets                    : http://annasthms.github.io/photosets
+    * npf mobile photoset fix      : http://git.io/JRBt7
+    * responsive media             : http://nouvae.tumblr.com/post/176815415055
+    * expanded tumblr localization : http://github.com/boscoxvi/expandedtumblrlocalization
+    * short notes                  : http://shythemes.tumblr.com/post/156021137818
+    * timeAgo()                    : http://bychloethemes.tumblr.com/plugins/timeago
+    * remove tumblr’s redirect     : http://magnusthemes.tumblr.com/post/643460974823833600/
+
+    full credits at http://aurthms.tumblr.com/credits
+
+ -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>
+        {block:TagPage}#{Tag} — {/block:TagPage}
+        {block:PostSummary}{PostSummary} — {/block:PostSummary}
+        {Title}
+    </title>
+
+    <link rel="shortcut icon" href="{favicon}" type="image/x-icon">
+
+    <link rel="alternate" href="{rss}" type="application/rss+xml" title="RSS">
+    {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- meta variables -->
+
+    {block:Hidden}
+    <meta name="image:background" content=""/>
+    <meta name="image:portrait" content=""/>
+
+    <meta name="color:tooltip background" content="#FCFFE7"/>
+    <meta name="color:tooltip border" content="#E0D8B0"/>
+    <meta name="color:tooltip content" content="#C36A2D"/>
+
+    <meta name="color:scrollbar background" content="#F6DAAB"/>
+    <meta name="color:scrollbar track" content="#AC9978"/>
+    <meta name="color:scrollbar thumb" content="#F6B5AB"/>
+
+    <meta name="color:selection background" content="#734046"/>
+    <meta name="color:selection text" content="#321F28"/>
+
+    <meta name="color:lightbox background" content="#C7D2CF"/>
+
+    <meta name="color:focus outline" content="#6BC6EF"/>
+
+    <meta name="color:background" content="#F6DAAB"/>
+    <meta name="color:text" content="#111111"/>
+
+    <meta name="color:link" content="#4A4A4A"/>
+    <meta name="color:link accent" content="#9C3D54"/>
+    <meta name="color:link hover" content="#222222"/>
+
+    <meta name="color:accent background" content="#E2703A"/>
+    <meta name="color:accent text" content="#FFFFFF"/>
+
+    <meta name="color:post background" content="#E5C989"/>
+    <meta name="color:post border" content="#E1C487"/>
+
+    <meta name="color:link post background" content="#A7A988"/>
+    <meta name="color:link post border" content="#737745"/>
+    <meta name="color:link post content" content="#4A502E"/>
+    <meta name="color:link post hover background" content="#45472B"/>
+    <meta name="color:link post hover content" content="#ffffff"/>
+
+    <meta name="color:audio post background" content="#111111"/>
+    <meta name="color:audio post text" content="#FFFFFF"/>
+
+    <meta name="color:answer post question background" content="#FAF2E8"/>
+    <meta name="color:answer post question border" content="#EFBD78"/>
+    <meta name="color:answer post question content" content="#A4A4A4"/>
+    <meta name="color:answer post question content accent" content="#735B77"/>
+
+    <meta name="color:titles" content="#310B0B"/>
+    <meta name="color:text borders" content="#C39E5C"/>
+
+    <meta name="color:tags" content="#AA2B1D"/>
+    <meta name="color:user" content="#E79E4F"/>
+
+    <meta name="color:like icon" content="#FF4136"/>
+    <meta name="color:reblog icon" content="#2ECC40"/>
+    <meta name="color:reply icon" content="#39CCCC"/>
+    <meta name="color:comment icon" content="#001f3f"/>
+    <meta name="color:post attribution icon" content="#0074D9"/>
+    <meta name="color:original post icon" content="#FF851B"/>
+
+    <meta name="select:background size" content="auto"/>
+    <meta name="select:background size" content="cover"/>
+    <meta name="select:background size" content="contain"/>
+
+    <meta name="select:background repeat" content="repeat"/>
+    <meta name="select:background repeat" content="no-repeat"/>
+
+    <meta name="select:background position" content="top"/>
+    <meta name="select:background position" content="center"/>
+    <meta name="select:background position" content="center top"/>
+    <meta name="select:background position" content="center center"/>
+    <meta name="select:background position" content="center bottom"/>
+    <meta name="select:background position" content="bottom"/>
+    <meta name="select:background position" content="left top"/>
+    <meta name="select:background position" content="left center"/>
+    <meta name="select:background position" content="left bottom"/>
+    <meta name="select:background position" content="right top"/>
+    <meta name="select:background position" content="right center"/>
+    <meta name="select:background position" content="right bottom"/>
+
+    <meta name="select:background attachment" content="fixed"/>
+    <meta name="select:background attachment" content="scroll"/>
+
+    <meta name="select:font size" title="12px" content="12"/>
+    <meta name="select:font size" title="13px" content="13"/>
+    <meta name="select:font size" title="14px" content="14"/>
+
+    <meta name="select:font" content="ABeeZee"/>
+    <meta name="select:font" content="Fira Sans"/>
+    <meta name="select:font" content="Inder"/>
+    <meta name="select:font" content="Karla"/>
+    <meta name="select:font" content="Lato"/>
+    <meta name="select:font" content="Maven Pro"/>
+    <meta name="select:font" content="Overpass"/>
+    <meta name="select:font" content="Pt Sans"/>
+    <meta name="select:font" content="Ubuntu"/>
+
+    <meta name="select:content padding" title="16px" content="16"/>
+    <meta name="select:content padding" title="20px" content="20"/>
+    <meta name="select:content padding" title="24px" content="24"/>
+
+    <meta name="select:content border radius" content="0"/>
+    <meta name="select:content border radius" title="4px" content="4"/>
+    <meta name="select:content border radius" title="8px" content="8"/>
+    <meta name="select:content border radius" title="10px" content="10"/>
+
+    <meta name="select:sidebar width" title="220px" content="220"/>
+    <meta name="select:sidebar width" title="240px" content="240"/>
+    <meta name="select:sidebar width" title="260px" content="260"/>
+
+    <meta name="select:post width" title="400px" content="400"/>
+    <meta name="select:post width" title="450px" content="450"/>
+    <meta name="select:post width" title="500px" content="500"/>
+    <meta name="select:post width" title="540px" content="540"/>
+
+    <meta name="select:inline caption width" title="268px" content="268"/>
+    <meta name="select:inline caption width" title="300px" content="300"/>
+    <meta name="select:inline caption width" title="360px" content="360"/>
+
+    <meta name="select:post spacing" title="80px" content="80"/>
+    <meta name="select:post spacing" title="96px" content="96"/>
+    <meta name="select:post spacing" title="112px" content="112"/>
+    <meta name="select:post spacing" title="128px" content="128"/>
+    <meta name="select:post spacing" title="144px" content="144"/>
+
+    <meta name="select:photoset gutter" title="2px" content="2"/>
+    <meta name="select:photoset gutter" title="3px" content="3"/>
+    <meta name="select:photoset gutter" title="4px" content="4"/>
+
+    <meta name="if:dark tumblr controls" content=""/>
+    <meta name="if:small tumblr controls" content=""/>
+    <meta name="if:show tumblr controls on hover" content=""/>
+    <meta name="if:custom scrollbar" content=""/>
+    <meta name="if:archive link" content=""/>
+    <meta name="if:random link" content=""/>
+    <meta name="if:follow button" content=""/>
+    <meta name="if:show icon" content=""/>
+    <meta name="if:search bar" content=""/>
+    <meta name="if:inline captions" content=""/>
+    <meta name="if:centered" content=""/>
+    <meta name="if:jump pagination" content=""/>
+    <meta name="if:scroll to top" content=""/>
+
+    <meta name="text:ask url" content="/ask"/>
+    <meta name="text:ask title" content="Message"/>
+    <meta name="text:link1 url" content=""/>
+    <meta name="text:link1 title" content=""/>
+    <meta name="text:link2 url" content=""/>
+    <meta name="text:link2 title" content=""/>
+    <meta name="text:link3 url" content=""/>
+    <meta name="text:link3 title" content=""/>
+    <meta name="text:link4 url" content=""/>
+    <meta name="text:link4 title" content=""/>
+    <meta name="text:link5 url" content=""/>
+    <meta name="text:link5 title" content=""/>
+    <meta name="text:link6 url" content=""/>
+    <meta name="text:link6 title" content=""/>
+    <meta name="text:link7 url" content=""/>
+    <meta name="text:link7 title" content=""/>
+    {/block:Hidden}
+
+    <!-- fonts & icons -->
+
+    <link rel="preconnect" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
+    <link href="//fonts.googleapis.com/css2?family={select:font}:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.discordapp.com/attachments/967937307762122792/967938449350983730/feathericons.css">
+
+    <!-- jquery -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- 
+        NPF image fix v3.0 by http://glenthemes.tumblr.com [2021]
+        💌 http://git.io/JRBt7
+        -->
+
+    <script src="//npf-images-v3.github.io/script.js"></script>
+    <link rel="stylesheet" href="//npf-images-v3.github.io/recon.css">
+
+    <style tmblr-npf>
+        :root {
+            --NPF-Caption-Spacing: {select:content padding}px;
+            --NPF-Image-Spacing: {select:photoset gutter}px;
+        }
+    </style>
+
+</head>
+
+<style type="text/css">
+
+:root {
+    --Bold-Font: 700;
+
+    --Button-Width: 30px;
+    --Avatar-Width: 24px;
+    --Sidebar-Image-Width: 140px;
+
+    --Tooltips-Casing: lowercase;
+    --Header-Links-Casing: capitalize;
+    --Sidebar-Links-Casing: lowercase;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+:focus {
+    outline: {color:focus outline} solid 1px !important;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* tumblr controls */
+
+iframe.tmblr-iframe {
+{block:ifnotshowtumblrcontrolsonhover}
+    opacity: 1;
+    right: calc({select:content padding}px - 5px);
+{/block:ifnotshowtumblrcontrolsonhover}
+{block:ifdarktumblrcontrols}
+    filter: contrast(150%) invert(100%);
+    -webkit-filter: contrast(150%) invert(100%);
+{/block:ifdarktumblrcontrols}
+    z-index: 99999999999999 !important;
+{block:ifshowtumblrcontrolsonhover}
+    width: 100% !important;
+    padding-right: calc(var(--Button-Width) + {select:content padding}px);
+    opacity: 0.0000001;
+    right: 0;
+    transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+{/block:ifshowtumblrcontrolsonhover}
+{block:ifsmalltumblrcontrols}
+    transform: scale(0.8, 0.8);
+    -webkit-transform: scale(0.8, 0.8);
+    -moz-transform: scale(0.8, 0.8);
+    -ms-transform: scale(0.8, 0.8);
+    -o-transform: scale(0.8, 0.8);
+    transform-origin: right top;
+    -webkit-transform-origin: right top;
+    -moz-transform-origin: right top;
+    -o-transform-origin: right top;
+{/block:ifsmalltumblrcontrols}
+}
+
+{block:ifshowtumblrcontrolsonhover}
+
+iframe.tmblr-iframe:hover {
+    opacity: 1 !important;
+    padding-right: calc(var(--Button-Width) + ({select:content padding}px * 2));
+    transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+}
+
+{/block:ifshowtumblrcontrolsonhover}
+
+[class^="button_"] {
+    background-color: {color:post background};
+    display: none;
+    width: var(--Button-Width);
+    height: var(--Button-Width);
+    margin: 0;
+    padding: 0;
+    border: {color:post border} solid 1px;
+    border-radius: 50%;
+    backdrop-filter: blur(8px);
+    position: fixed;
+    z-index: 20;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+[class^="button_"] .icon {
+    display: block;
+    margin: auto;
+    color: {color:text};
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.cc {
+    background-color: transparent;
+    display: block;
+    border: 0;
+    right: {select:content padding}px;
+}
+
+.top {
+    right: {select:content padding}px;
+    bottom: {select:content padding}px;
+}
+
+.top:hover {
+    cursor: pointer;
+}
+
+/* basics */
+
+body {
+    background-color: {color:background};
+{block:ifbackgroundimage}
+    background: {color:background} url({image:background}) {select:background position}/{select:background size} {select:background repeat} {select:background attachment};
+{/block:ifbackgroundimage}
+    color: {color:text};
+    font: {select:font size}px '{select:font}', sans-serif;
+    line-height: 1.8em !important;
+    letter-spacing: 0.07em !important;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* selection */
+
+::selection {
+    color: {color:selection text};
+    background: rgba({RGBcolor:selection background}, 0.65);
+}
+
+::-moz-selection {
+    color: {color:selection text};
+    background: rgba({RGBcolor:selection background}, 0.65);
+}
+
+{block:ifcustomscrollbar}
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+    width: 16px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: {color:scrollbar track};
+    border: {color:scrollbar background} solid 7px;
+    border-top-width: 12px;
+    border-bottom-width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: {color:scrollbar thumb};
+    border: {color:scrollbar background} solid 6px;
+	border-radius: {select:content border radius}px;
+}
+
+{/block:ifcustomscrollbar}
+
+/* tooltips */
+
+.tooltipster-borderless .tooltipster-box {
+    background-color: rgba({RGBcolor:tooltip background}, 0.85) !important;
+    border: 1px solid {color:tooltip border} !important;
+    border-radius: {select:content border radius}px !important;
+}
+
+.tooltipster-borderless .tooltipster-content {
+    padding: 0.5em !important;
+    color: {color:tooltip content} !important;
+    font-size: 0.9em;
+    text-transform: var(--Tooltips-Casing);
+}
+
+/* links */
+
+a,
+a:link,
+a:visited,
+a:active,
+a:hover {
+    color: {color:link};
+    text-decoration: none;
+    transition: 0.4s ease-in-out;
+    -webkit-transition: 0.4s ease-in-out;
+    -moz-transition: 0.4s ease-in-out;
+    -ms-transition: 0.4s ease-in-out;
+    -o-transition: 0.4s ease-in-out;
+}
+
+a:hover {
+    color: {color:link hover};
+}
+
+/* text */
+
+pre,
+code {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    font: 0.9em/1.8em 'Victor Mono', monospace !important;
+    letter-spacing: 0.1em !important;
+}
+
+blockquote {
+    margin: 0;
+    padding: 0 0 0 1em;
+    border-left: solid 1px {color:text borders};
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+small,
+sub,
+sup {
+    font-size: 0.9em;
+}
+
+b,
+strong {
+    font-weight: var(--Bold-Font);
+    letter-spacing: 0.1em !important;
+}
+
+em,
+i {
+    font-style: italic;
+}
+
+/* lists */
+
+ol,
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 1.6em;
+}
+
+ol li,
+ul li {
+    padding-left: 2em;
+    position: relative;
+}
+
+ol li {
+    counter-increment: list;
+    padding-left: 2.7em;
+}
+
+ol li::before,
+ul li::before {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+ol li::before {
+    content: counter(list, decimal-leading-zero) '.';
+    width: 2em;
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    top: 0.35em;
+}
+
+ul li::before {
+    content: '\e904';
+    color: {color:text};
+    font: normal normal normal 1em/1 'feather' !important;
+
+    text-transform: none;
+    speak: none;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    top: 0.35em;
+}
+
+/* tumblr styles */
+
+.npf_color_joey {
+    color: #ff4136 !important;
+}
+
+.npf_color_monica {
+    color: #ff851b !important;
+}
+
+.npf_color_phoebe {
+    color: #ffdc00 !important;
+}
+
+.npf_color_ross {
+    color: #2ecc40 !important;
+}
+
+.npf_color_rachel {
+    color: #0074d9 !important;
+}
+
+.npf_color_chandler {
+    color: #b10dc9 !important;
+}
+
+.npf_color_niles {
+    color: #f012be !important;
+}
+
+.npf_color_frasier {
+    color: #001f3f !important;
+}
+
+.npf_color_mr_big {
+    color: #111111 !important;
+}
+
+.npf_quote,
+.npf_chat {
+    line-height: 1.8em !important;
+    letter-spacing: 0.05em !important;
+}
+
+a.post_media_photo_anchor {
+    background: transparent !important;
+    border: 0 !important;
+}
+
+.tmblr-attribution > a {
+    background-image: none !important;
+    background-color: rgba({color:link accent}, 0.1) !important;
+    display: block;
+    padding: 0.5em !important;
+    box-sizing: border-box;
+    color: {color:link accent} !important;
+    line-height: 1;
+    text-align: right !important;
+    position: relative;
+}
+
+.tmblr-attribution > a::after {
+    content: '\e93a';
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: -1em;
+    opacity: 0;
+    font: normal normal normal 1em/1 'feather' !important;
+    transition: 0.4s ease-in-out;
+    -webkit-transition: 0.4s ease-in-out;
+    -moz-transition: 0.4s ease-in-out;
+    -ms-transition: 0.4s ease-in-out;
+    -o-transition: 0.4s ease-in-out;
+}
+
+.tmblr-attribution > a:hover::after {
+    margin-left: 0.5em;
+    opacity: 1;
+}
+
+a.read_more {
+    background-image: none !important;
+    background-color: {color:accent background} !important;
+    padding: 0.65em !important;
+    padding-right: 3em !important;
+    box-sizing: border-box;
+    border-radius: 1em !important;
+    color: {color:accent text} !important;
+    font-size: 1.2em;
+    font-weight: var(--Bold-Font);
+    line-height: 1;
+    letter-spacing: 0.1em;
+    position: relative;
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    -ms-border-radius: 1em;
+    -o-border-radius: 1em;
+}
+
+a.read_more::after {
+    content: '\e918';
+    background: rgba({RGBcolor:accent text}, 0.15)
+        linear-gradient({color:accent background}, {color:accent background}) 
+        0 0/0 100% no-repeat;
+    display: block;
+    margin: 0;
+    padding: 0.75em;
+    font: normal normal normal 1em/1 'feather' !important;
+    border-radius: 0 1em 1em 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: 0.4s ease-in-out;
+    -webkit-border-radius: 0 1em 1em 0;
+    -moz-border-radius: 0 1em 1em 0;
+    -ms-border-radius: 0 1em 1em 0;
+    -o-border-radius: 0 1em 1em 0;
+    -webkit-transition: 0.4s ease-in-out;
+    -moz-transition: 0.4s ease-in-out;
+    -ms-transition: 0.4s ease-in-out;
+    -o-transition: 0.4s ease-in-out;
+}
+
+a.read_more:hover::after {
+    background-size: 100% 100%;
+}
+
+/* main */
+
+main {
+    display: grid;
+    align-items: start;
+    gap: {select:post spacing}px;
+    grid-template-areas: 
+        'header header'
+        'sidebar posts'
+        'sidebar footer';
+    grid-template-columns: {select:sidebar width}px {select:post width}px;
+    width: calc({select:sidebar width}px + {select:post width}px + {select:post spacing}px);
+{block:ifcentered}
+    margin: 0 auto;
+{/block:ifcentered}
+{block:ifnotcentered}
+    margin: 0 0 0 {select:post spacing}px;
+{/block:ifnotcentered}
+    padding: {select:post spacing}px 0;
+}
+
+.bg-blur {
+    backdrop-filter: blur(8px);
+}
+
+.bg-post {
+    background-color: {color:post background};
+}
+
+.border--post {
+    border-color: {color:post border} !important;
+    box-sizing: border-box;
+}
+
+.content-padding {
+    padding: {select:content padding}px;
+    box-sizing: border-box;
+}
+
+.rounded {
+    border-radius: {select:content border radius}px;
+    -webkit-border-radius: {select:content border radius}px;
+    -moz-border-radius: {select:content border radius}px;
+    -ms-border-radius: {select:content border radius}px;
+    -o-border-radius: {select:content border radius}px;
+}
+
+/* header */
+
+header {
+    grid-area: header;
+    width: 100%;
+    position: fixed;
+    z-index: 15;
+    top: 0;
+    left: 0;
+}
+
+.header_contents {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    margin: 0;
+    border: solid 1px;
+    position: relative;
+}
+
+.header_contents a {
+    background: transparent
+        linear-gradient({color:accent background}, {color:accent background}) 
+        50% 100%/0 2px no-repeat;
+    display: block;
+    margin-right: {select:content padding}px;
+    color: {color:text};
+    text-transform: var(--Header-Links-Casing);
+}
+
+.header_contents a:last-child {
+    margin-right: 0;
+}
+
+.header_contents a:hover {
+    background-size: 100% 2px;
+}
+
+.header_contents .follow-btn {
+    background-color: {color:accent background};
+    background-image: none;
+    margin-bottom: -1px;
+    padding: {select:content padding}px;
+    color: {color:accent text};
+    line-height: 1;
+}
+
+/* sidebar */
+
+aside {
+    grid-area: sidebar;
+    width: {select:sidebar width}px;
+    position: relative;
+    z-index: 9;
+}
+
+.sidebar_contents {
+    display: block;
+    width: 100%;
+    padding-top: 0 !important;
+    border: solid 1px;
+    text-align: center;
+    position: relative;
+}
+
+.sidebar_contents .title {
+    background: transparent
+        linear-gradient({color:accent background}, {color:accent background}) 
+        50% 100%/0 2px no-repeat;
+    display: inline-block;
+    max-width: 100%;
+    margin: {select:content padding}px auto 0;
+    color: {color:accent background};
+}
+
+.sidebar_contents .title:hover {
+    background-size: 100% 2px;
+}
+
+.sidebar_contents .text {
+    margin-top: {select:content padding}px;
+    text-align: left;
+}
+
+.sidebar_contents .portrait {
+    display: block;
+    width: var(--Sidebar-Image-Width);
+    height: auto;
+    margin: 0 auto -40px;
+    position: relative;
+    top: -40px;
+}
+
+.sidebar_contents .user-avatar {
+    display: block;
+    height: auto;
+    margin: 0 auto -20px;
+    position: relative;
+    top: -20px;
+
+    --Avatar-Width: 40px;
+}
+
+/* navigation */
+
+nav,
+.search {
+    display: block;
+    width: {select:sidebar width}px;
+    max-width: 100%;
+    margin: {select:content padding}px 0 0;
+    padding: 0;
+    position: relative;
+}
+
+nav a {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 calc({select:content padding}px / 2) calc({select:content padding}px / 2) 0;
+    backdrop-filter: blur(8px);
+    position: relative;
+}
+
+nav a span {
+    padding: 0.35em 0.45em 0.25em;
+    border: solid 2px;
+    box-sizing: border-box;
+    border-radius: 0.5em;
+    color: {color:text};
+    text-transform: var(--Sidebar-Links-Casing);
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    -ms-border-radius: 0.5em;
+    -o-border-radius: 0.5em;
+    transition: 0.4s ease-in-out;
+    -webkit-transition: 0.4s ease-in-out;
+    -moz-transition: 0.4s ease-in-out;
+    -ms-transition: 0.4s ease-in-out;
+    -o-transition: 0.4s ease-in-out;
+}
+
+nav a:hover span {
+    background-color: transparent;
+}
+
+/* search */
+
+.search-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search-form input,
+.search-form .search-btn {
+    background-color: {color:post background};
+    display: block;
+    margin: 0;
+    padding: 0.5em;
+    border: {color:post border} solid 1px;
+    box-sizing: border-box;
+    border-radius: 0.5em;
+    color: {color:text};
+    line-height: 1;
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    -ms-border-radius: 0.5em;
+    -o-border-radius: 0.5em;
+}
+
+.search-form .search-btn {
+    width: var(--Button-Width);
+    height: var(--Button-Width);
+    padding: 0.3em;
+    font-size: 1.4em;
+}
+
+.search-form .search-btn:hover {
+    cursor: pointer;
+}
+
+.search-form input {
+    width: calc(100% - (var(--Button-Width) + 1em));
+}
+
+.search-form input::-webkit-input-placeholder {
+    color: {color:text};
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+
+.search-form input:-ms-input-placeholder {
+    color: {color:text};
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+
+.search-form input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+.search-form input:focus:-moz-placeholder {
+    color: transparent;
+}
+
+.search-form input:focus::-moz-placeholder {
+    color: transparent;
+}
+
+.search-form input:focus:-ms-input-placeholder {
+    color: transparent;
+}
+
+.search-form input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
+/* posts */
+
+section {
+    grid-area: posts;
+    width: {select:post width}px;
+    position: relative;
+}
+
+article {
+    display: block;
+    width: 100%;
+    margin: 0;
+{block:indexpage}
+    margin-bottom: {select:post spacing}px;
+{/block:indexpage}
+    position: relative;
+}
+
+article:last-child {
+    margin-bottom: 0;
+}
+
+[class^="post_"] {
+    display: block;
+    width: 100%;
+    margin: 0;
+    position: relative;
+}
+
+.post_media.rounded {
+    overflow: hidden;
+}
+
+.post_media.border--post {
+    border: solid 1px;
+}
+
+.post_contents {
+    margin-top: {select:content padding}px;
+}
+
+/* lightboxes */
+
+.vignette,
+#vignette {
+    opacity: 0;
+}
+
+.tmblr-lightbox, 
+#tumblr_lightbox {
+    background-color: rgba({RGBcolor:lightbox background}, 0.65) !important;
+}
+ 
+.lightbox-image,
+#tumblr_lightbox img {
+    max-width: none;
+    box-shadow: none !important;
+    border-radius: {select:content border radius}px !important;
+}
+
+/* text posts */
+
+.post_title {
+    border: solid 1px;
+}
+
+.post_title + [class^="post_"] {
+    margin-top: {select:content padding}px;
+}
+
+.title {
+    font-size: 1.3em;
+    font-weight: var(--Bold-Font);
+    letter-spacing: 0.1em;
+}
+
+.text {
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+.text a {
+    background: transparent
+        linear-gradient({color:link accent}, {color:link accent})
+        50% 100%/0 2px no-repeat;
+    padding: 0 0 0.25em;
+    color: {color:link accent};
+}
+
+.text a:hover {
+    background-size: 100% 2px;
+}
+
+.text .npf_inst,
+.text p,
+.text h1,
+.text h2,
+.text h3,
+.text h4,
+.text ol,
+.text ul,
+.text pre,
+.text blockquote {
+    margin-top: 1rem;
+}
+
+.text .npf_inst:first-child,
+.text p:first-child,
+.text h1:first-child,
+.text h2:first-child,
+.text h3:first-child,
+.text h4:first-child,
+.text ol:first-child,
+.text ul:first-child,
+.text pre:first-child,
+.text blockquote:first-child {
+    margin-top: 0 !important;
+}
+
+/* media */
+
+.photo {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.photo img {
+    display: block;
+    width: 100%;
+}
+
+.npf_inst {
+    overflow: hidden;
+    border-radius: {select:content border radius}px !important;
+    -webkit-border-radius: {select:content border radius}px;
+    -moz-border-radius: {select:content border radius}px;
+    -ms-border-radius: {select:content border radius}px;
+    -o-border-radius: {select:content border radius}px;
+}
+
+/* photosets */
+
+[photoset-layout] {
+    grid-gap: {select:photoset gutter}px;
+}
+
+[photoset-layout] div {
+    cursor: pointer;
+}
+
+/* quote post */
+
+.post_quote {
+    border: solid 1px;
+}
+
+.post_quote [class^="quote-"] {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.post_quote [class^="quote-"] .icon {
+    display: block;
+    width: var(--Button-Width);
+    height: var(--Button-Width);
+    border-right: {color:accent background} solid 1px;
+    color: {color:accent background};
+    font-size: 1.3em;
+    font-weight: lighter;
+    position: relative;
+}
+
+.post_quote [class^="quote-"] .npf_quote {
+    display: block;
+    width: calc(100% - (var(--Button-Width) + {select:content padding}px));
+}
+
+.post_quote .quote-short .npf_quote {
+    font-size: 1.6em !important;
+}
+
+.post_quote .quote-medium .npf_quote {
+    font-size: 1.4em !important;
+}
+
+.post_quote .quote-large .npf_quote {
+    font-size: 1.2em !important;
+}
+
+.post_quote .text {
+    margin-top: {select:content padding}px;
+}
+
+/* link post */
+
+.post_link {
+    background-color: {color:link post background};
+    overflow: hidden;
+    border: {color:link post border} solid 2px;
+    color: {color:link post content};
+}
+
+.post_link .thumbnail {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+.post_link_contents {
+    color: {color:link post content};
+    transition: 0.4s ease-in-out;
+    -webkit-transition: 0.4s ease-in-out;
+    -moz-transition: 0.4s ease-in-out;
+    -ms-transition: 0.4s ease-in-out;
+    -o-transition: 0.4s ease-in-out;
+}
+
+.post_link_contents .title .icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: calc({select:content padding}px / 2);
+    font-size: 1.3em;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+}
+
+.post_link_contents .title .icon,
+.post_link_contents .link-host {
+    color: {color:link post hover} !important;
+    transition: 0.4s ease-in-out;
+    -webkit-transition: 0.4s ease-in-out;
+    -moz-transition: 0.4s ease-in-out;
+    -ms-transition: 0.4s ease-in-out;
+    -o-transition: 0.4s ease-in-out;
+}
+
+.post_link_contents .text {
+    margin-top: {select:content padding}px;
+}
+
+.post_link_contents .link-host {
+    display: block;
+    width: 100%;
+    margin-top: calc({select:content padding}px / 2);
+    font-weight: var(--Bold-Font);
+    font-size: 0.9em;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.post_link:hover {
+    background-color: {color:link post hover background};
+    border-color: {color:link post hover background};
+}
+
+.post_link:hover .post_link_contents,
+.post_link:hover .post_link_contents .title .icon,
+.post_link:hover .post_link_contents .link-host{
+    color: {color:link post hover content} !important;
+}
+
+.post_link + .post_caption {
+    margin-top: {select:content padding}px;
+}
+
+.npf-link-block {
+    border-color: {color:link post border} !important;
+    border-radius: {select:content border radius}px !important;
+    font-family: '{select:font}', sans-serif !important;
+}
+
+.text > .npf-link-block {
+    margin-top: 0 !important;
+}
+
+.npf-link-block > a {
+    background-image: none !important;
+    background-color: {color:link post background} !important;
+    border: 0 !important;
+    color: {color:link post content} !important;
+    transition: 0.4s ease-in-out;
+}
+
+.npf-link-block:hover > a {
+    color: white !important;
+    background-color: {color:link post border} !important;
+}
+
+.npf-link-block .poster:before {
+    background: #111111 !important;
+}
+
+.npf-link-block .title {
+    padding: 0 {select:content padding}px !important;
+    font-size: 1.2em !important;
+    font-weight: var(--Bold-Font) !important;
+    line-height: 1.8em !important;
+}
+
+.npf-link-block .poster .title {
+    font-size: 1.4em !important;
+}
+
+.npf-link-block.no-poster .title {
+    padding-top: {select:content padding}px !important;
+}
+
+.npf-link-block .bottom {
+    line-height: 1.8em !important;
+    padding: {select:content padding}px !important;
+}
+
+.npf-link-block .bottom .description {
+    font-size: {select:font size}px !important;
+    line-height: 1.8em !important;
+}
+
+.npf-link-block .bottom .site-name {
+    background-color: rgba({RGBcolor:link post hover}, 0.15) !important;
+    display: inline-block !important;
+    margin-top: {select:content padding}px !important;
+    padding: 0.5em !important;
+    border-radius: {select:content border radius}px !important;
+    color: {color:link post hover} !important;
+    font-size: 0.9em !important;
+    font-weight: var(--Bold-Font) !important;
+    line-height: 1 !important;
+    letter-spacing: 0.1em !important;
+    position: relative !important;
+}
+
+.npf-link-block:hover .bottom .site-name {
+    background-color: rgba({RGBcolor:link post background}, 0.25) !important;
+    color: white !important;
+}
+
+/* chat posts */
+
+.post_chat {
+    padding: 0;
+}
+
+.post_chat .l::before {
+    display: none;
+}
+
+.post_chat .l {
+    margin-bottom: calc({select:content padding}px / 2);
+    border: solid 1px;
+}
+
+.post_chat .l:last-child {
+    margin-bottom: 0;
+}
+
+.post_chat .l .label,
+.post_chat b {
+    padding-right: 0.5em;
+    color: {color:titles};
+    font-weight: var(--Bold-Font);
+    letter-spacing: 0.07em;
+}
+
+/* audio posts */
+
+.post_audio {
+    background-color: {color:audio post background};
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post_audio .player {
+    display: block;
+    width: var(--Button-Width);
+    height: var(--Button-Width);
+    overflow: hidden;
+    border-radius: 50%;
+    position: relative;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.post_audio .audio_info {
+    display: block;
+    width: calc(100% - (var(--Button-Width) + {select:content padding}px));
+    position: relative;
+}
+
+.post_audio .audio_info > div {
+    display: block;
+    width: 100%;
+    color: {color:audio post text};
+    line-height: 1;
+    position: relative;
+}
+
+.post_audio .audio_info > div + div {
+    margin-top: calc({select:content padding}px / 2);
+}
+
+.post_audio .audio_info .track {
+    font-size: 1.2em;
+    font-weight: var(--Bold-Font);
+    letter-spacing: 0.1em;
+}
+
+.bandcamp_audio_player,
+.spotify_audio_player {
+    width: 100% !important
+}
+
+/* video posts */
+
+.video * {
+    display: block;
+    min-width: 100%
+}
+
+/* answer posts */
+
+.post_question,
+.post_answer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.post_question .user-avatar,
+.post_answer .user-avatar {
+    display: block;
+    margin: 0;
+    top: {select:content padding}px;
+
+    --Avatar-Width: 30px;
+}
+
+.post_question .asker-question {
+    background-color: {color:answer post question background};
+    display: block;
+    width: calc(100% - (var(--Button-Width) + {select:content padding}px));
+    border: {color:answer post question border} solid 1px;
+    position: relative;
+}
+
+.post_question .asker-question .asker,
+.post_answer .answerer-answer .answerer {
+    display: block;
+    width: 100%;
+    margin: 0;
+    color: {color:answer post question content accent};
+    font-weight: var(--Bold-Font);
+    letter-spacing: 0.1em;
+    position: relative;
+}
+
+.post_question .asker-question .asker a,
+.post_answer .answerer-answer .answerer a {
+    color: {color:answer post question content accent};
+    font-weight: var(--Bold-Font);
+    letter-spacing: 0.1em;
+}
+
+.post_question .asker-question .text {
+    color: {color:answer post question content};
+}
+
+.post_question .asker-question .text,
+.post_answer .answerer-answer > .answerer + .text {
+    margin-top: calc({select:content padding}px / 2);
+}
+
+.post_answer {
+    margin-top: {select:content padding}px;
+}
+
+.post_answer .answerer-answer {
+    display: block;
+    width: 100%;
+    border: solid 1px;
+    position: relative;
+}
+
+.post_answer .answerer-answer.not-original {
+    width: calc(100% - (var(--Button-Width) + {select:content padding}px));
+}
+
+.post_answer .answerer-answer .answerer,
+.post_answer .answerer-answer .answerer a{
+    color: {color:user};
+}
+
+.post_question + .comment,
+.post_answer + .comment {
+    margin-top: {select:content padding}px;
+}
+
+/* captions */
+
+.post_contents .post_caption {
+    margin-top: {select:content padding}px;
+}
+
+.comment {
+    display: block;
+    width: 100%;
+    margin-bottom: {select:content padding}px;
+    border: solid 1px;
+    position: relative;
+}
+
+.comment:last-child {
+    margin-bottom: 0;
+}
+
+.comment > .user + .text {
+    margin-top: calc({select:content padding}px / 2);
+}
+
+.user {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+    line-height: 1;
+    position: relative;
+}
+
+a.user {
+    color: {color:user};
+    font-weight: var(--Bold-Font);
+    letter-spacing: 0.1em;
+}
+
+.user-avatar {
+    display: inline-block;
+    width: var(--Avatar-Width);
+    height: var(--Avatar-Width);
+    vertical-align: middle;
+    margin-right: calc({select:content padding}px / 2);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    position: relative;
+}
+
+.deactivated,
+a.user:not([href]) {
+    color: {color:text} !important;
+    position: relative;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.deactivated::after,
+a.user:not([href])::after {
+    content: "{block:English}Deactivated{/block:English}{block:German}Deaktiviert{/block:German}{block:French}Désactivé{/block:French}{block:Italian}Disattivato{/block:Italian}{block:Japanese}無効化{/block:Japanese}{block:Turkish}Kapatıldı{/block:Turkish}{block:Spanish}Desactivado{/block:Spanish}{block:Russian}Деактивировано{/block:Russian}{block:Polish}deaktywowano{/block:Polish}{block:PortuguesePT}Desativado{/block:PortuguesePT}{block:PortugueseBR}Desativado{/block:PortugueseBR}{block:Dutch}Gedeactiveerd{/block:Dutch}{block:Korean}사용 안 함{/block:Korean}{block:ChineseSimplified}已关闭{/block:ChineseSimplified}{block:ChineseTraditional}已停用{/block:ChineseTraditional}{block:ChineseHK}已停用{/block:ChineseHK}{block:Indonesian}Dinonaktifkan{/block:Indonesian}{block:Hindi}निष्क्रिय{/block:Hindi}";
+    display: inline-block;
+    vertical-align: baseline;
+    margin: 0 0 0 5px;
+    opacity: 0.25;
+    color: {color:text};
+    text-transform: lowercase;
+    transition: opacity 0.6s;
+    -webkit-transition: opacity 0.6s;
+    -moz-transition: opacity 0.6s;
+    -ms-transition: opacity 0.6s;
+    -o-transition: opacity 0.6s;
+}
+
+.deactivated:hover::after,
+a.user:not([href]):hover::after {
+    opacity: 0.75;
+}
+
+/* post info */
+
+.post_pinned {
+    overflow: hidden;
+    margin-bottom: {select:content padding}px;
+    color: {color:accent background};
+}
+
+.post_pinned .icon,
+.post_pinned .pinned-label {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    backdrop-filter: blur(8px);
+    position: relative;
+}
+
+.post_pinned .icon {
+    width: var(--Button-Width);
+    height: var(--Button-Width);
+    margin-right: {select:content padding}px;
+    border: {color:accent background} solid 1px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.post_pinned .icon::before {
+    content: '';
+    background-color: {color:accent background};
+    display: block;
+    width: calc(var(--Button-Width) - 8px);
+    height: calc(var(--Button-Width) - 8px);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+
+.post_pinned .icon .feather {
+    display: block;
+    margin: 7px 0 0 2px;
+    color: {color:accent text};
+    font-size: 1.2em;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.post_info .timeago,
+.post_info .like-b .b,
+.post_info .reblog {
+    background-color: {color:post background};
+    display: inline-block;
+    margin: 0 calc({select:content padding}px / 2) 0 0;
+    padding: 0.5em;
+    border: {color:post border} solid 1px;
+    box-sizing: border-box;
+    border-radius: 0.5em;
+    color: {color:text};
+    line-height: 1;
+    text-transform: lowercase;
+    backdrop-filter: blur(8px);
+    position: relative;
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    -ms-border-radius: 0.5em;
+    -o-border-radius: 0.5em;
+}
+
+.post_info .notes-wrap {
+    display: block;
+    width: 100%;
+    margin: {select:content padding}px 0 0;
+    position: relative;
+}
+
+.post_info .notes-wrap .notecount {
+    display: inline-block;
+    max-width: 100%;
+    margin: 0;
+    backdrop-filter: blur(8px);
+    position: relative;
+}
+
+.post_info .notes-wrap .notecount::after {
+    content: '{lang:notes}';
+    margin-left: 0.5em;
+}
+
+/* like button */
+
+.post_info .like-b {
+    background-color: transparent;
+    display: inline-block;
+    margin: 0 calc({select:content padding}px / 2) 0 0;
+    padding: 0;
+    border: 0;
+    position: relative;
+}
+
+.post_info .like-b .b {
+    display: block;
+    margin: 0;
+}
+
+.post_info .like-b .like_button iframe {
+    display: block;
+    width: 100%;
+    margin: 0;
+    opacity: 0.0000001;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+}
+
+.post_info .like-b .liked + .b {
+    opacity: 0.25;
+}
+
+.post_info .like-b:hover {
+    cursor: pointer;
+}
+
+/* post tags */
+
+.post_tags {
+    margin-top: {select:content padding}px;
+}
+
+.post_tags .tag-label,
+.post_tags a {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 1em 0.5em 0;
+    backdrop-filter: blur(8px);
+    position: relative;
+}
+
+.post_tags a:before {
+    content: '\0023';
+}
+
+.post_tags a {
+    background: transparent
+        linear-gradient({color:tags}, {color:tags}) 
+        50% 100%/0 2px no-repeat;
+    color: {color:tags};
+    transition: 0.4s ease-in-out;
+    -webkit-transition: 0.4s ease-in-out;
+    -moz-transition: 0.4s ease-in-out;
+    -ms-transition: 0.4s ease-in-out;
+    -o-transition: 0.4s ease-in-out;
+}
+
+.post_tags a:last-child {
+    margin-right: 0;
+}
+
+.post_tags a:hover {
+    background-size: 100% 2px;
+}
+
+/* post notes */
+
+.post_notes {
+    margin-top: {select:content padding}px;
+}
+
+.post_notes > div {
+    margin-bottom: {select:content padding}px;
+}
+
+.post_notes .sources {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.post_notes .sources .source-box {
+    display: block;
+    width: calc(50% - ({select:content padding}px / 2));
+    border: solid 1px;
+}
+
+.post_notes .sources .source-box .user-avatar,
+.post_notes .sources .source-box .source_name {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+}
+
+.post_notes .sources .source-box .user-avatar {
+    margin-right: {select:content padding}px;
+
+    --Avatar-Width: 30px;
+}
+
+.post_notes .sources .source-box .source_name {
+    width: calc(100% - (var(--Avatar-Width) + ({select:content padding}px + 1em)));
+}
+
+.post_notes .sources .source-box .source_name a {
+    display: block;
+    margin: 0;
+    overflow: hidden;
+    color: {color:link accent};
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+ol.notes {
+    list-style: none;
+    background-color: transparent;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    backdrop-filter: blur(8px);
+    position: relative;
+}
+
+ol.notes li::before {
+    display: none;
+}
+
+ol.notes li.note.like::before,
+ol.notes li.note.reblog::before,
+ol.notes li.note.reply::before,
+ol.notes li.note.with_commentary::before,
+ol.notes li.note.post_attribution::before,
+ol.notes li.note.original_post::before {
+    display: block;
+    width: var(--Avatar-Width);
+    height: var(--Avatar-Width);
+    overflow: hidden;
+    margin: 0;
+    padding: 0.35em 0 0 0.4em;
+    box-sizing: border-box;
+    border-radius: 50%;
+    font: normal normal normal 1.2em/1 "feather" !important;
+    text-transform: none;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    top: {select:content padding}px;
+    left: calc((var(--Avatar-Width) + {select:content padding}px) * -1);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+ol.notes li.note.like::before {
+    content: '\e983' !important;
+    background-color: rgba({RGBcolor:like icon}, 0.15);
+    color: rgb(255, 65, 54);
+}
+
+ol.notes li.note.reblog::before {
+    content: '\e9ce' !important;
+    background-color: rgba({RGBcolor:reblog icon}, 0.15);
+    color: {color:reblog icon};
+}
+
+ol.notes li.note.reply::before {
+    content: '\e94f' !important;
+    background-color: rgba({RGBcolor:reply icon}, 0.15);
+    color: {color:reply icon};
+}
+
+ol.notes li.note.with_commentary::before {
+    content: '\e99f' !important;
+    background-color: rgba({RGBcolor:comment icon}, 0.15);
+    color: {color:comment icon};
+}
+
+ol.notes li.note.post_attribution::before {
+    content: '\e94d' !important;
+    background-color: rgba({RGBcolor:post attribution icon}, 0.15);
+    color: {color:post attribution icon};
+}
+
+ol.notes li.note.original_post::before {
+    content: '\e9e7' !important;
+    background-color: rgba({RGBcolor:original post icon}, 0.15);
+    color: {color:original post icon};
+}
+
+ol.notes li.note {
+    background-color: {color:post background};
+    display: block;
+    width: calc(100% - (var(--Avatar-Width) + {select:content padding}px));
+    margin: 0 0 {select:content padding}px
+        calc(var(--Avatar-Width) + {select:content padding}px);
+    padding: {select:content padding}px;
+    border: {color:post border} solid 1px;
+    box-sizing: border-box;
+    border-radius: {select:content border radius}px;
+    -webkit-border-radius: {select:content border radius}px;
+    -moz-border-radius: {select:content border radius}px;
+    -ms-border-radius: {select:content border radius}px;
+    -o-border-radius: {select:content border radius}px;
+}
+
+ol.notes li.note:last-child {
+    margin-bottom: 0;
+}
+
+ol.notes li.note img.avatar {
+    display: inline-block;
+    width: var(--Avatar-Width);
+    height: var(--Avatar-Width);
+    vertical-align: middle;
+    margin: 0 calc({select:content padding}px / 2) 0 0;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+ol.notes li.note a:first-of-type {
+    color: {color:link accent};
+    font-weight: var(--Bold-Font);
+    letter-spacing: 0.1em;
+}
+
+ol.notes li.note blockquote {
+    margin: {select:content padding}px 0 0 var(--Avatar-Width);
+}
+
+ol.notes li.note.more_notes_link_container {
+    background-color: transparent !important;
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+.more_notes_link,
+.notes_loading {
+    display: block;
+    color: {color:titles} !important;
+    font-size: 1.2em !important;
+    font-weight: var(--Bold-Font) !important;
+    text-align: left !important;
+}
+
+/* footer */
+
+footer {
+    grid-area: footer;
+    width: {select:post width}px;
+    position: relative;
+}
+
+footer .text {
+    text-align: center;
+}
+
+footer .text span {
+    display: inline-block;
+    max-width: 100%;
+    backdrop-filter: blur(8px);
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 0 calc({select:post spacing}px / 2);
+    padding: 0;
+    position: relative;
+}
+
+.pagination li::before {
+    display: none;
+}
+
+.pagination li {
+    padding: 0;
+    backdrop-filter: blur(8px);
+}
+
+.pagination li a {
+    opacity: 0.35;
+    color: {color:accent background};
+    line-height: 1;
+}
+
+.pagination li .active {
+    opacity: 1;
+}
+
+.pagination li .active .icon {
+    background-color: transparent;
+    display: inline-block;
+    vertical-align: center;
+    padding: 0.25em;
+    box-sizing: border-box;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    transition: 0.4s ease-in-out;
+    -webkit-transition: 0.4s ease-in-out;
+    -moz-transition: 0.4s ease-in-out;
+    -ms-transition: 0.4s ease-in-out;
+    -o-transition: 0.4s ease-in-out;
+}
+
+.pagination li .active.prev .icon {
+    margin-right: 0.5em;
+}
+
+.pagination li .active.next .icon {
+    margin-left: 0.5em;
+}
+
+.pagination li .active:hover .icon {
+    background-color: {color:accent background};
+    color: {color:accent text};
+}
+
+.jump_pagination {
+    display: block;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.jump_pagination li {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0;
+    margin: 0 {select:content padding}px 0 0;
+}
+
+.jump_pagination li:last-child {
+    margin-right: 0;
+}
+
+.jump_pagination .current_page {
+    background-color: {color:post background};
+    width: 2.5em;
+    height: 2.5em;
+    padding: 0.75em 0;
+    box-sizing: border-box;
+    border-radius: 50%;
+    color: {color:titles};
+    font-weight: var(--Bold-Font);
+    line-height: 1;
+    text-align: center;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.jump_pagination .jump_page a {
+    background-color: transparent;
+    display: block;
+    width: 2.5em;
+    height: 2.5em;
+    padding: 0.75em 0;
+    box-sizing: border-box;
+    border-radius: 50%;
+    opacity: 1;
+    color: {color:text};
+    text-align: center;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.jump_pagination .jump_page a:hover {
+    background-color: {color:link accent};
+    color: {color:background};
+}
+
+/* media queries */
+
+@media only screen and (max-width: 860px) {
+
+    iframe.tmblr-iframe,
+    iframe.tmblr-iframe:hover,
+    .cc {
+        display: none;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    main {
+        width: {select:post width}px;
+        max-width: 90%;
+        margin: 0 auto;
+        grid-template-areas:
+            'header header'
+            'sidebar sidebar'
+            'posts posts'
+            'footer footer';
+        grid-template-columns: none;
+    }
+
+    aside {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    section,
+    footer {
+        width: 100%;
+    }
+
+    .pagination {
+        justify-content: flex-end;
+    }
+
+    .pagination li {
+        margin-right: {select:content padding}px;
+    }
+
+    .pagination li:first-child {
+        margin-right: auto;
+    }
+
+    .pagination li:last-child {
+        margin-right: 0;
+    }
+
+    .jump_pagination {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 860px) {
+
+    aside {
+        position: sticky;
+        top: calc({select:post spacing}px * 2);
+    }
+
+}
+
+{block:indexpage}
+    {block:ifinlinecaptions}
+
+        @media only screen and (min-width: 1100px) {
+
+            :root {
+                --Post-Width: calc(({select:post width}px + {select:inline caption width}px) + {select:content padding}px);
+            }
+
+            main {
+                grid-template-areas: 
+                    'header header'
+                    'sidebar posts'
+                    'sidebar footer';
+                grid-template-columns: {select:sidebar width}px var(--Post-Width);
+                width: calc({select:sidebar width}px + var(--Post-Width) + {select:post spacing}px);
+            }
+
+            section,
+            footer {
+                width: var(--Post-Width);
+            }
+
+            article {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                justify-content: space-between;
+            }
+
+            .post_pinned {
+                width: {select:inline caption width}px;
+                margin: 0;
+                position: absolute;
+                z-index: 1;
+                top: calc((var(--Button-Width) / 2) * -1);
+                right: calc({select:content padding}px + (var(--Button-Width) / 2));
+            }
+
+            .post_media {
+                width: {select:post width}px;
+            }
+
+            .post_contents {
+                width: {select:inline caption width}px;
+                margin-top: 0;
+            }
+
+            .is-pinned .post_contents {
+                margin-top: {select:content padding}px;
+            }
+
+            .post_tags {
+                width: {select:post width}px;
+            }
+
+        }
+
+    {/block:ifinlinecaptions}
+{/block:indexpage}
+
+{CustomCSS}
+</style>
+
+<body>
+
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    {block:ifshowtumblrcontrolsonhover}
+        <button class="button_a cc">
+            <i class="icon feather i-more-vertical"></i>
+        </button>
+    {/block:ifshowtumblrcontrolsonhover}
+
+    {block:ifscrolltotop}
+        <button class="button_b top" title="{lang:Back to Top}">
+            <i class="icon feather i-chevron-up"></i>
+        </button>
+    {/block:ifscrolltotop}
+
+    <!-- main -->
+
+    <main>
+
+        <!--  header -->
+
+        <header>
+            <div class="header_contents bg-post border--post {block:ifnotfollowbutton}content-padding{/block:ifnotfollowbutton}">
+                <a href="{blogurl}">{lang:Home}</a>
+                {block:AskEnabled}
+                    {block:ifasktitle}
+                        <a href="{text:ask url}">{text:ask title}</a>
+                    {/block:ifasktitle}
+                {/block:AskEnabled}
+                {block:ifarchivelink}
+                    <a href="/archive">{lang:Archive}</a>
+                {/block:ifarchivelink}
+                {block:ifrandomlink}
+                    <a href="/random">{lang:Random}</a>
+                {/block:ifrandomlink}
+
+                {block:haspages}
+                    {block:pages}
+                        <a href="{url}">{label}</a>
+                    {/block:pages}
+                {/block:haspages}
+
+                {block:iffollowbutton}
+                    <a href="https://tumblr.com/follow/{name}" class="follow-btn" target="popup"
+                        onclick="window.open('https://tumblr.com/follow/{name}','name','width=600,height=400,top=100,left=150,right=150')">{lang:Follow}</a>
+                {/block:iffollowbutton}
+            </div>
+        </header>
+
+        <!-- sidebar -->
+
+        <aside>
+            <div class="sidebar_contents bg-post border--post content-padding rounded">
+                {block:ifportraitimage}
+                    <img src="{image:portrait}" 
+                        alt="image" class="portrait">
+                {/block:ifportraitimage}
+
+                {block:ifnotportraitimage}
+                    {block:ifshowicon}
+                        <img src="{PortraitURL-64}" 
+                            alt="image" class="user-avatar">
+                    {/block:ifshowicon}
+                {/block:ifnotportraitimage}
+
+                <a href="{blogurl}" class="title">{title}</a>
+                <div class="text">
+                    {description}
+                </div>
+            </div>
+
+            <!-- nav -->
+
+            <nav>
+                {block:iflink1title}
+                    <a href="{text:link1 url}">
+                        <span class="bg-post border--post">{text:link1 title}</span>
+                    </a>
+                {/block:iflink1title}
+                {block:iflink2title}
+                    <a href="{text:link2 url}">
+                        <span class="bg-post border--post">{text:link2 title}</span>
+                    </a>
+                {/block:iflink2title}
+                {block:iflink3title}
+                    <a href="{text:link3 url}">
+                        <span class="bg-post border--post">{text:link3 title}</span>
+                    </a>
+                {/block:iflink3title}
+                {block:iflink4title}
+                    <a href="{text:link4 url}">
+                        <span class="bg-post border--post">{text:link4 title}</span>
+                    </a>
+                {/block:iflink4title}
+                {block:iflink5title}
+                    <a href="{text:link5 url}">
+                        <span class="bg-post border--post">{text:link5 title}</span>
+                    </a>
+                {/block:iflink5title}
+                {block:iflink6title}
+                    <a href="{text:link6 url}">
+                        <span class="bg-post border--post">{text:link6 title}</span>
+                    </a>
+                {/block:iflink6title}
+                {block:iflink7title}
+                    <a href="{text:link7 url}">
+                        <span class="bg-post border--post">{text:link7 title}</span>
+                    </a>
+                {/block:iflink7title}
+            </nav>
+
+            {block:ifsearchbar}
+
+                <!-- search -->
+
+                <div class="search">
+                    <script language="javascript">
+                        function send() {
+                            document.theform.submit()
+                        }
+                    </script>
+
+                    <form action="/search" method="get" class="search-form">
+                        <input type="text" name="q" id="search" value="{SearchQuery}" placeholder="{lang:search}">
+                        <button type="submit" class="search-btn">
+                            <i class="icon feather i-search"></i>
+                        </button>
+                    </form>
+                </div>
+            {/block:ifsearchbar}
+        </aside>
+
+        <!-- posts -->
+
+        <section>
+
+            {block:posts inlineMediaWidth="1280" inlineNestedMediaWidth="1280"}
+
+                <article id="{postID}" class="post {block:PinnedPostLabel}is-pinned{/block:PinnedPostLabel}" post-type="{PostType}">
+
+                    {block:PinnedPostLabel}
+                        <div class="post_pinned">
+                            <span class="icon">
+                                <i class="feather i-map-pin"></i>
+                            </span>
+                            <span class="pinned-label">{lang:Pinned Post}</span>
+                        </div>
+                    {/block:PinnedPostLabel}
+
+                    <div class="post_media {block:photo}bg-blur border--post rounded{/block:photo} {block:photoset}bg-blur border--post rounded{/block:photoset} {block:video}bg-post border--post rounded{/block:video}">
+
+                        {block:Text}
+                            {block:Title}
+                                <div class="post_title bg-post border--post content-padding rounded">
+                                    <span class="title">{title}</span>
+                                </div>
+                            {/block:Title}
+
+                            {block:NotReblog}
+                                <div class="post_caption">
+                                    <div class="comment bg-post border--post content-padding rounded">
+                                        <div class="text">
+                                            {body}
+                                        </div>
+                                    </div>
+                                </div>
+                            {/block:NotReblog}
+
+                            {block:RebloggedFrom}
+                                <div class="post_caption">
+                                    {block:Reblogs}
+                                        <div class="comment bg-post border--post content-padding rounded">
+                                            {block:IsActive}
+                                                <a {block:haspermalink}href="{permalink}" target="_blank" rel="noopener noreferrer"{/block:haspermalink} 
+                                                    class="user">
+                                                    <img src="{PortraitURL-64}" 
+                                                        alt="image" class="user-avatar">
+                                                    {username}
+                                                </a>
+                                            {/block:IsActive}
+
+                                            {block:IsDeactivated}
+                                                <div class="user deactivated">
+                                                    <img src="{PortraitURL-64}" 
+                                                        alt="image" class="user-avatar">
+                                                    {username}
+                                                </div>
+                                            {/block:IsDeactivated}
+
+                                            <div class="text">
+                                                {body}
+                                            </div>
+                                        </div>
+                                    {/block:Reblogs}
+                                </div>
+                            {/block:RebloggedFrom}
+                        {/block:Text}
+
+                        {block:Photo}
+                            <div class="photo">
+                                <img src="{PhotoURL-HighRes}"
+                                    alt="{PhotoAlt}">
+                            </div>
+                        {/block:Photo}
+
+                        {block:Photoset}
+                            <div class="photoset-grid" photoset-layout="{PhotosetLayout}">
+                                {block:Photos}
+                                    <div data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}" 
+                                        data-lowres="{PhotoURL-500}" 
+                                        data-highres="{PhotoURL-HighRes}" 
+                                        onclick="lightbox(this)">
+                                        <img src="{PhotoURL-HighRes}" 
+                                            alt="{PhotoAlt}"/>
+                                    </div>
+                                {/block:Photos}
+                            </div>
+                        {/block:Photoset}
+
+                        {block:Quote}
+                            <div class="post_quote bg-post border--post content-padding rounded">
+                                <div class="quote-{length}">
+                                    <i class="icon feather i-quote-left"></i>
+                                    <p class="npf_quote">{quote}</p>
+                                </div>
+
+                                {block:Source}
+                                    <div class="text">
+                                        — {Source}
+                                    </div>
+                                {/block:Source}
+                            </div>
+                        {/block:Quote}
+
+                        {block:Link}
+                            <a href="{url}" target="_blank" rel="noopener noreferrer"
+                                class="post_link rounded">
+                                    {block:Thumbnail}
+                                        <img src="{Thumbnail-HighRes}" 
+                                            alt="image" class="thumbnail">
+                                    {/block:Thumbnail}
+
+                                    <div class="post_link_contents content-padding">
+                                        <div class="title">
+                                            <i class="icon feather i-paperclip"></i> {name}
+                                        </div>
+
+                                        {block:Excerpt}
+                                            <div class="text">
+                                                {Excerpt}
+                                            </div>
+                                        {/block:Excerpt}
+
+                                        {block:Host}
+                                            <div class="link-host">
+                                                {Host}
+                                            </div>
+                                        {/block:Host}
+                                    </div>
+                                </a>
+
+                                {block:Description}
+                                    <div class="post_caption">
+                                        {block:NotReblog}
+                                            <div class="comment bg-post border--post content-padding rounded">
+                                                <div class="text">
+                                                    {description}
+                                                </div>
+                                            </div>
+                                        {/block:NotReblog}
+
+                                        {block:RebloggedFrom}
+                                            {block:Reblogs}
+                                                <div class="comment bg-post border--post content-padding rounded">
+                                                    {block:IsActive}
+                                                        <a {block:haspermalink}href="{permalink}" target="_blank" rel="noopener noreferrer"{/block:haspermalink} 
+                                                            class="user">
+                                                            <img src="{PortraitURL-64}" 
+                                                                alt="image" class="user-avatar">
+                                                            {username}
+                                                        </a>
+                                                    {/block:IsActive}
+
+                                                    {block:IsDeactivated}
+                                                        <div class="user deactivated">
+                                                            <img src="{PortraitURL-64}" 
+                                                                alt="image" class="user-avatar">
+                                                            {username}
+                                                        </div>
+                                                    {/block:IsDeactivated}
+
+                                                    <div class="text">
+                                                        {body}
+                                                    </div>
+                                                </div>
+                                            {/block:Reblogs}
+                                        {/block:RebloggedFrom}
+                                    </div>
+                                {/block:Description}
+                        {/block:Link}
+
+                        {block:Chat}
+                            {block:Title}
+                                <div class="post_title bg-post border--post content-padding rounded">
+                                    <span class="title">{title}</span>
+                                </div>
+                            {/block:Title}
+
+                            <ol class="post_chat">
+                                {block:Lines}
+                                    <li class="l bg-post border--post content-padding rounded">
+                                        {block:Label}
+                                            <span class="label">{label}</span>
+                                        {/block:Label}
+                                        {line}
+                                    </li>
+                                {/block:Lines}
+                            </ol>
+                        {/block:Chat}
+
+                        {block:Audio}
+                            <div class="post_audio content-padding rounded">
+                                {block:AudioPlayer}
+                                    <div class="player">
+                                        {AudioPlayer}
+                                    </div>
+                                {/block:AudioPlayer}
+
+                                <div class="audio_info">
+                                    {block:TrackName}
+                                        <div class="track">
+                                            {TrackName}
+                                        </div>
+                                    {/block:TrackName}
+                                    {block:Artist}
+                                        <div class="artist">
+                                            {Artist}
+                                        </div>
+                                    {/block:Artist}
+                                </div>
+                            </div>
+                        {/block:Audio}
+
+                        {block:Video}
+                            <div class="video">
+                                {Video-500}
+                            </div>
+                        {/block:Video}
+
+                        {block:Answer}
+                            <div class="post_caption">
+                                <div class="post_question">
+                                    <img src="{AskerPortraitURL-64}" 
+                                        alt="image" class="user-avatar">
+
+                                    <div class="asker-question content-padding rounded">
+                                        <div class="asker">
+                                            {lang:Asker asked 2}
+                                        </div>
+
+                                        <div class="text">
+                                            {question}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {block:NotReblog}
+                                    <div class="post_answer">
+                                        <div class="answerer-answer bg-post border--post content-padding rounded">
+                                            <div class="text">
+                                                {Replies}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {/block:NotReblog}
+
+                                {block:Answerer}
+                                    <div class="post_answer">
+                                        <img src="{AnswererPortraitURL-64}" 
+                                            alt="image" class="user-avatar">
+
+                                        <div class="answerer-answer not-original bg-post border--post content-padding rounded">
+                                            <div class="answerer">
+                                                {Answerer}
+                                            </div>
+
+                                            <div class="text">
+                                                {Answer}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {/block:Answerer}
+
+                                {block:Reblogs}
+                                    <div class="comment bg-post border--post content-padding rounded">
+                                        {block:IsActive}
+                                            <a {block:haspermalink}href="{permalink}" target="_blank" rel="noopener noreferrer"{/block:haspermalink} 
+                                                class="user">
+                                                <img src="{PortraitURL-64}" 
+                                                    alt="image" class="user-avatar">
+                                                {username}
+                                            </a>
+                                        {/block:IsActive}
+
+                                        {block:IsDeactivated}
+                                            <div class="user deactivated">
+                                                <img src="{PortraitURL-64}" 
+                                                    alt="image" class="user-avatar">
+                                                {username}
+                                            </div>
+                                        {/block:IsDeactivated}
+
+                                        <div class="text">
+                                            {body}
+                                        </div>
+                                    </div>
+                                {/block:Reblogs}
+                            </div>
+                        {/block:Answer}
+
+                    </div>
+
+                    {block:date}
+                        <div class="post_contents">
+                            {block:indexpage}
+                                <div class="post_info">
+                                    <a href="{permalink}" class="timeago" title="{timeago}">{timestamp}</a>
+
+                                    <button class="like-b" onclick="likeNot()">
+                                        {LikeButton}
+                                        <span class="b">{block:English}Like{/block:English}{block:German}Liken{/block:German}{block:French}J'aime{/block:French}{block:Italian}Mi piace{/block:Italian}{block:Japanese}スキ{/block:Japanese}{block:Turkish}Beğen{/block:Turkish}{block:Spanish}Me gusta{/block:Spanish}{block:Russian}Нравится{/block:Russian}{block:Polish}Lubię{/block:Polish}{block:PortuguesePT}Gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir{/block:PortugueseBR}{block:Dutch}Vind ik leuk{/block:Dutch}{block:Korean}좋아요{/block:Korean}{block:ChineseSimplified}喜欢{/block:ChineseSimplified}{block:ChineseTraditional}喜歡{/block:ChineseTraditional}{block:ChineseHK}喜歡{/block:ChineseHK}{block:Indonesian}Suka{/block:Indonesian}{block:Hindi}पसंद करें{/block:Hindi}</span>
+                                    </button>
+                                    <a href="{reblogurl}" target="_blank" rel="noopener noreferrer" class="reblog">{block:English}Reblog{/block:English}{block:German}Rebloggen{/block:German}{block:French}Rebloguer{/block:French}{block:Italian}Reblogga{/block:Italian}{block:Japanese}リブログ{/block:Japanese}{block:Turkish}Yeniden Blogla{/block:Turkish}{block:Spanish}Rebloguear{/block:Spanish}{block:Russian}Реблог{/block:Russian}{block:Polish}Rebloguj{/block:Polish}{block:PortuguesePT}Reblogar{/block:PortuguesePT}{block:PortugueseBR}Reblogar{/block:PortugueseBR}{block:Dutch}Rebloggen{/block:Dutch}{block:Korean}리블로그{/block:Korean}{block:ChineseSimplified}转发{/block:ChineseSimplified}{block:ChineseTraditional}轉格{/block:ChineseTraditional}{block:ChineseHK}轉載{/block:ChineseHK}{block:Indonesian}Reblog{/block:Indonesian}{block:Hindi}रीब्लॉग करेंे{/block:Hindi}</a>
+
+                                    {block:NoteCount}
+                                        <div class="notes-wrap">
+                                            <span class="notecount">{NoteCount}</span>
+                                        </div>
+                                    {/block:NoteCount}
+                                </div>
+                            {/block:indexpage}
+
+                            {block:caption}
+                                <div class="post_caption">
+                                    {block:Reblogs}
+                                        <div class="comment bg-post border--post content-padding rounded">
+                                            {block:IsOriginalEntry}
+                                                {block:IsActive}
+                                                    <a {block:haspermalink}href="{permalink}" target="_blank" rel="noopener noreferrer"{/block:haspermalink} 
+                                                        class="user">
+                                                        <img src="{PortraitURL-64}" 
+                                                            alt="image" class="user-avatar">
+                                                        {username}
+                                                    </a>
+                                                {/block:IsActive}
+
+                                                {block:IsDeactivated}
+                                                    <div class="user deactivated">
+                                                        <img src="{PortraitURL-64}" 
+                                                            alt="image" class="user-avatar">
+                                                        {username}
+                                                    </div>
+                                                {/block:IsDeactivated}
+                                            {/block:IsOriginalEntry}
+
+                                            {block:IsNotOriginalEntry}
+                                                <a {block:haspermalink}href="{permalink}" target="_blank" rel="noopener noreferrer"{/block:haspermalink} 
+                                                    class="user">
+                                                    <img src="{PortraitURL-64}" 
+                                                        alt="image" class="user-avatar">
+                                                    {username}
+                                                </a>
+                                            {/block:IsNotOriginalEntry}
+
+                                            <div class="text">
+                                                {body}
+                                            </div>
+                                        </div>
+                                    {/block:Reblogs}
+
+                                    {block:NotReblog}
+                                        <div class="comment bg-post border--post content-padding rounded">
+                                            <div class="text">
+                                                {caption}
+                                            </div>
+                                        </div>
+                                    {/block:NotReblog}
+                                </div>
+                            {/block:caption}
+                        </div>
+                    {/block:date}
+
+                    {block:hastags}
+                        <div class="post_tags">
+                            {block:permalinkpage}
+                                <span class="tag_label">{lang:tagged with}:</span>
+                            {/block:permalinkpage}
+
+                            {block:tags}
+                                <a href="{tagurl}">{tag}</a>
+                            {/block:tags}
+                        </div>
+                    {/block:hastags}
+
+                    <!--{block:ContentSource}
+                        <a href="{SourceURL}">{lang:Source}</a>
+                    {/block:ContentSource}-->
+
+                </article>
+
+                {block:PostNotes}
+
+                    <article class="post_notes">
+                        {block:date}
+                            <div class="title bg-blur">
+                                {lang:Posted on DayOfWeek the DayOfMonthWithSuffix of Month Year at FormattedTime}
+                            </div>
+                        {/block:date}
+
+                        {block:RebloggedFrom}
+                            <div class="sources">
+                                <div class="source-box bg-post border--post rounded content-padding">
+                                    <img src="{ReblogParentPortraitURL-64}" 
+                                        alt="image" class="user-avatar">
+                                    <span class="source_name">{lang:Reblogged from ReblogParentName 2}</span>
+                                </div>
+
+                                {block:ContentSource}
+                                    <div class="source-box bg-post border--post rounded content-padding">
+                                        <img src="{ReblogRootPortraitURL-64}" 
+                                            alt="image" class="user-avatar">
+                                        <span class="source_name">{lang:Originally from ReblogRootName 2}</span>
+                                    </div>
+                                {/block:ContentSource}
+                            </div>
+                        {/block:RebloggedFrom}
+
+                        {block:NotReblog}
+                            <div class="sources">
+                                <div class="source-box bg-post border--post rounded content-padding">
+                                    <img src="{PostAuthorPortraitURL-64}" 
+                                        alt="image" class="user-avatar"/>
+                                    <span class="source_name">{lang:Posted by PostAuthorName 2}</span>
+                                </div>
+                            </div>
+                        {/block:NotReblog}
+
+                        {block:NoteCount}
+                            <div class="title bg-blur">
+                                {NoteCountWithLabel}
+                            </div>
+                        {/block:NoteCount}
+
+                        {PostNotes-64}
+                    </article>
+
+                {/block:PostNotes}
+
+            {/block:posts}
+
+        </section>
+
+        <!-- footer -->
+
+        <footer>
+            {block:pagination}
+                <ul class="pagination">
+                    <li>{lang:Page CurrentPage of TotalPages}</li>
+                    <li>
+                        <a {block:previouspage}href="{previouspage}" class="active prev"{/block:previouspage}>{block:previouspage}<i class="icon feather i-arrow-left"></i>{/block:previouspage}{lang:prev}</a>
+                    </li>
+                    {block:ifjumppagination}
+                        <li>
+                            <ol class="jump_pagination">
+                                {block:JumpPagination length="5"}
+                                    {block:CurrentPage}
+                                        <li class="current_page">{PageNumber}</li>
+                                    {/block:CurrentPage}
+                                    {block:JumpPage}
+                                        <li class="jump_page">
+                                            <a href="{url}">{PageNumber}</a>
+                                        </li>
+                                    {/block:JumpPage}
+                                {/block:JumpPagination}
+                            </ol>
+                        </li>
+                    {/block:ifjumppagination}
+                    <li>
+                        <a {block:nextpage}href="{nextpage}" class="active next"{/block:nextpage}>{lang:next}{block:nextpage}<i class="icon feather i-arrow-right"></i>{/block:nextpage}</a>
+                    </li>
+                </ul>
+            {/block:pagination}
+
+            <div class="text">
+                <span class="bg-blur"><a href="//atpreviews.tumblr.com/preview/run">Run Theme</a> by <a href="//aurthms.tumblr.com">aurthms</a>. {lang:Powered by Tumblr 2}.</span>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- scripts -->
+
+    <script>
+        function likeNot() {
+            alert("Couldn't like the post. Try again.")
+        }
+
+        $(document).ready(function () {
+            function controls() {
+                var itop = $('header').outerHeight() + {select:content padding};
+                var ctop = itop - 10;
+
+                $('head').append('<style type="text/css">iframe.tmblr-iframe{top: ' + ctop + 'px !important;}</style>');
+                $('.cc').css('top', itop);
+            }
+
+            $('p, div')
+                .filter(function () {
+                    return $.trim(this.innerHTML) == '';
+                })
+                .remove();
+
+            $(window).on('resize', function(){
+                controls();
+            });
+            controls();
+        });
+    </script>
+
+    {block:ifscrolltotop}
+        <script>
+            $(document).ready(function () {
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 100) {
+                        $('.top').fadeIn();
+                    } else {
+                        $('.top').fadeOut();
+                    }
+                });
+
+                $('.top').click(function (e) {
+                    e.preventDefault();
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 1000);
+                    return false;
+                });
+            });
+        </script>
+    {/block:ifscrolltotop}
+
+    <script>
+        $(document).ready(function () {
+            var bodyStyles = window.getComputedStyle(document.body);
+            var $audio = $('iframe.tumblr_audio_player');
+
+            $audio.load(function () {
+                this; // dom element
+                $(this).contents().find('head').append('<style type="text/css">' +
+                    '.audio-player { background: {color:audio post background} !important; color: {color:audio post text} !important; }' +
+                    '.simple-player .audio-player { width: ' + bodyStyles.getPropertyValue('--Button-Width') + '; }' +
+                    '.audio-player .progress { display: none; }' +
+                    '</style>');
+            });
+        });
+    </script>
+
+    <link href="//static.tumblr.com/0podkko/xIbplezmo/modified_photosets.css" rel="stylesheet">
+    <script src="//static.tumblr.com/0podkko/jfMplm3f8/modified_photosets.js"></script>
+    <script>initPhotosets();</script>
+
+    <script src="//static.tumblr.com/i5s2zks/9Acok8oo2/bct-timeago.min.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function() {
+            $('.timeago').timeAgo({
+                time: 'short',
+            });
+
+            // round notes
+            var $posts = $('.post');
+
+            $posts.find('.notecount').each(function () {
+                var n = $(this).html().split(' ')[0].replace(/,/g, '');
+                if (n > 999) {
+                    n = Math.floor(n / 100) / 10;
+                    $(this).text(n + 'k');
+                }
+            });
+        });
+    </script>
+
+    <script src="//cdn.jsdelivr.net/gh/robinpx/tumblr/scripts/flexibleFrames/flexibleFrames.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function flexFrame() {
+                $('.comment').each(function () {
+                    $(this).find('iframe').wrap('<div class="iframe-flex"></div>');
+                    flexibleFrames(
+                        $('.iframe-flex')
+                    );
+                });
+                flexibleFrames(
+                    $('.video')
+                );
+            }
+
+            $(document).ready(flexFrame);
+        });
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="//unpkg.com/tooltipster/dist/css/tooltipster.bundle.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="//unpkg.com/tooltipster-follower/dist/css/tooltipster-follower.min.css" />
+    <script type="text/javascript" src="//unpkg.com/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+    <script type="text/javascript" src="//unpkg.com/tooltipster-follower/dist/js/tooltipster-follower.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('[title]').tooltipster({
+                theme: 'tooltipster-borderless',
+                plugin: ['follower'],
+                maxWidth: 160,
+                offset: [0, -25],
+                arrow: false,
+                animationDuration: 300,
+                delay: 100
+            });
+        });
+    </script>
+
+    <script>
+        function noHrefLi() {
+            var linkSet = document.querySelectorAll('a[href*="href.li/?"]');
+            Array.prototype.forEach.call(linkSet, function (el, i) {
+                var theLink = linkSet[i].getAttribute('href').split('href.li/?')[1];
+                linkSet[i].setAttribute('href', theLink);
+            });
+        }
+    </script>
+
+</body>
+
+</html>
