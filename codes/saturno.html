@@ -3398,15 +3398,24 @@ footer .text {
 
                     <div class="t-wrapper flex" style="margin-top: {select:content padding}px;">
 
-                        <!-- sidebar list -->
+                        <!-- sidebar list
+
+                             * Here are some options to writte about yourself, you can add/remove as many as you want.
+                             * To change the icon, you need to search for the one you want at http://glenthemes.tumblr.com/icons/iconsax and change the [icon-name] property.
+                             ! If you wish to use an <svg> icon that it's not on th previous list, please make sure to wrap it in a <class="icon"> element as shown in the example bellow.
+                             -->
 
                         <div class="s-wrapper flex flex--column">
                             <ul class="list-items flex">
-                                <li><i class="iconsax" icon-name="user-2"></i> name</li>
-                                <li><i class="iconsax" icon-name="heart"></i> pronouns</li>
-                                <li><i class="iconsax" icon-name="calendar-day"></i> birthday</li>
-                                <li><i class="iconsax" icon-name="sun"></i> sun sign</li>
-                                <li><i class="icon" style="margin-right: 1em;"><svg xmlns="http://www.w3.org/2000/svg"
+                                <li>
+                                    <i class="iconsax" icon-name="user-2"></i>
+                                    name
+                                </li>
+
+                                <!-- ! example use of an <svg> icon -->
+
+                                <li>
+                                    <i class="icon" style="margin-right: 1em;"><svg xmlns="http://www.w3.org/2000/svg"
                                             width="192" height="192" fill="#000000" viewBox="0 0 256 256">
                                             <rect width="256" height="256" fill="none"></rect>
                                             <circle cx="128" cy="128" r="88" fill="none" stroke="#000000"
@@ -3415,13 +3424,30 @@ footer .text {
                                                 d="M184.2,60.3c27.7-7.6,48.5-6.9,54.7,3.7,11,19.1-29.7,63.3-90.9,98.6S28.2,211.1,17.1,192c-6.1-10.6,3.7-29,24.1-49.2"
                                                 fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"
                                                 stroke-width="16"></path>
-                                    </svg></i> mbti</li>
+                                    </svg></i>
+                                    mbti
+                                </li>
                             </ul><!-- // .list-items -->
 
-                            <!-- social media links -->
+                            <!-- social media links
+
+                                 * Here is a list of social media/external links.
+                                 * To add more link you need to copy the social link wrapper <li> element. Make sure to modify the link and title properties.
+                                 * To change the icon, you need to search for the one you want at http://glenthemes.tumblr.com/icons/iconsax and change the [icon-name] property.
+                                 ! If you wish to use an <svg> icon that it's not on th previous list, please make sure to wrap it in a <class="icon"> element as shown in the example bellow.
+                                 -->
 
                             <div class="social-wrapper">
                                 <ul class="flex align-center">
+                                    <li>
+                                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+                                            class="social-link flex align-center" title="Instagram">
+                                                <i class="iconsax" icon-name="Instagram"></i>
+                                            </a>
+                                    </li><!-- // social link wrapper -->
+
+                                    <!-- ! example use of an <svg> icon -->
+
                                     <li>
                                         <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
                                             class="social-link flex align-center" title="Twitter">
@@ -3435,34 +3461,30 @@ footer .text {
                                                 </svg></i>
                                         </a>
                                     </li><!-- // social link wrapper -->
-                                    <li>
-                                        <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer"
-                                            class="social-link flex align-center" title="Instagram">
-                                            <i class="iconsax" icon-name="instagram"></i>
-                                        </a>
-                                    </li><!-- // social link wrapper -->
-                                    <li>
-                                        <a href="https://spotify.com/" target="_blank" rel="noopener noreferrer"
-                                            class="social-link flex align-center" title="Spotify">
-                                            <i class="iconsax" icon-name="spotify"></i>
-                                        </a>
-                                    </li><!-- // social link wrapper -->
                                 </ul>
                             </div><!-- // .social-wrapper -->
 
                         </div><!-- // .s-wrapper -->
 
-                        <!-- text boxs wrapper -->
+                        <!-- text boxes
+
+                             * Here are some text boxes you can use to writte thing about yourself/what are you doing/etc.
+                             ! To add more boxes, you need to copy <text> and paste right inside <b-wrapper>. You can add as many as you want.
+                             -->
 
                         <div class="b-wrapper flex">
+
                             <div class="text content-padding rounded">
+
                                 <b>watching</b>
 
                                 <ul>
                                     <li>カードキャプターさくら</li>
                                     <li>美少女戦士セーラームーン</li>
                                 </ul>
+
                             </div><!-- // .text -->
+
                         </div><!-- // .b-wrapper -->
 
                     </div><!-- // .t-wrapper -->
